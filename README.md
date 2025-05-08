@@ -25,7 +25,7 @@
 
 ## 🌟 Introdução
 
-Este é o projeto final do curso de QA avançado, desenvolvido para o Instituto Joga Junto. O objetivo principal é interagir com o a API do Instituto para realizar operações como:
+Este é o projeto final do curso de QA avançado, desenvolvido para o Instituto Joga Junto. O objetivo principal é interagir com o sistema de controle estoque do Instituto Joga Junto e a API do Instituto para realizar operações como:
 
 - Criação de usuário.
 - Autenticação segura via endpoint de login.

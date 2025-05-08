@@ -145,16 +145,28 @@ Este repositório serve para validar e garantir a qualidade de todas as regras d
 
 ## ▶️ Uso
 
-* Criar usuário:
+Após configurar o ambiente (instalação + variáveis), você poderá executar os testes de diferentes formas:
 
-  ```bash
-  python criar_usuario.py
-  ```
-* Realizar login e salvar resposta:
+📌 Testes de API com requests
 
-  ```bash
-  python login.py
-  ```
+Execute scripts de teste com chamadas diretas à API:
+
+python tests/test_api_login.py
+python tests/test_api_produtos.py
+
+📌 Testes automatizados com Behave
+
+Execute cenários em BDD:
+
+behave features/
+
+📌 Testes com Selenium
+
+Scripts baseados em navegação automatizada (caso aplicável):
+
+python tests/test_ui_login.py
+
+Os testes devem retornar saídas padronizadas com logs e validações de status code e conteúdo de resposta.
 
 ---
 

@@ -1,193 +1,193 @@
-# 🚀 Projeto final do curso  QA avançado - Instituto Joga Junto 🐍
+# 🚀 Projeto final do curso QA Avançado - Instituto Joga Junto 🐍
 
 <h1 align="center">
   <a href="https://github.com/seu-usuario/projeto-final-python">🔗 Projeto Final Python</a>
 </h1>
-<p align="center">Projeto final do curso de QA Avançado, com foco na garantia da qualidade do sistema de controle de estoque do Instituto Joga Junto. Este repositório reúne planos de teste, casos de teste manuais e automatizados (utilizando Selenium e Behave), além de relatórios de bugs, estatísticas de testes e cobertura. O objetivo é validar as funcionalidades definidas nos requisitos e desenvolver um plano de testes completo, contemplando diferentes abordagens. Também inclui-se a geração de estatísticas de bugs encontrados e pendentes para a próxima sprint.</p>
+<p align="center">Projeto final do curso QA Avançado, focado na garantia de qualidade do sistema de controle de estoque do Instituto Joga Junto. Reúne planos de teste, casos de teste manuais e automatizados (Selenium e Behave), relatórios de bugs, estatísticas de testes e cobertura. O principal objetivo é validar requisitos, criar plano de testes completo e gerar estatísticas de bugs para a próxima sprint.</p>
 
 ---
 
 ## 📝 Índice
-- [Introdução](#introdução)
-- [Descrição](#descrição)
-- [Cronograma](#cronograma)
-- [Tecnologias](#tecnologias)
-- [Como Rodar o Projeto](#como-rodar-o-projeto)
-- [Funcionalidades](#funcionalidades)
-- [Status do Projeto](#status-do-projeto)
-- [Autores](#autores)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
-- [Conclusão](#conclusãolicença)
-- [Referências](#Referências)
+
+* [Introdução](#introdução)
+* [Descrição](#descrição)
+* [Tecnologias](#tecnologias)
+* [Cronograma](#cronograma)
+* [Instalação](#instalação)
+* [Uso](#uso)
+* [Testes](#testes)
+* [Funcionalidades](#funcionalidades)
+* [Roadmap](#roadmap)
+* [Status do Projeto](#status-do-projeto)
+* [Contribuição](#contribuição)
+* [FAQ](#faq)
+* [Licença](#licença)
+* [Autores e Contato](#autores-e-contato)
+* [Créditos e Agradecimentos](#créditos-e-agradecimentos)
+* [Referências](#referências)
+* [Conclusão](#conclusão)
 
 ---
 
 ## 🌟 Introdução
 
-Este é o projeto final do curso de QA avançado, desenvolvido para o Instituto Joga Junto. O objetivo principal é interagir com o sistema de controle estoque do Instituto Joga Junto e a API do Instituto para realizar operações como:
-
-- Criação de usuário.
-- Autenticação segura via endpoint de login.
-- Armazenamento estruturado da resposta JSON.
-
-Este projeto foi criado como parte de um desafio para consolidar os conhecimentos adquiridos durante o curso.
-
-> **Motivação:** Este projeto foi desenvolvido para aprender e aplicar conceitos de APIs, autenticação e manipulação de dados em Python.
+Desafio final do módulo QA Avançado do Instituto Joga Junto: interagir com o sistema de controle de estoque e API do Instituto para operações como criação de usuário, autenticação e armazenamento de resposta JSON.
 
 ---
 
 ## 📌 Descrição
-Projeto final do módulo de introdução à Python, onde desenvolvemos uma solução para interagir com a **API do Instituto Joga Junto**. O objetivo é demonstrar conhecimentos em:
-- Autenticação via API
-- Manipulação de JSON
-- Versionamento com Git/GitHub
-- Boas práticas de código Python
+
+Projeto de QA em Python para testar endpoints de usuário e login, validar resposta JSON, gerar relatórios de bugs e métricas de cobertura.
 
 ---
 
-## 📅Cronograma
-
-| Atividade                          | Duração | Data de Início | Data de Término |
-|------------------------------------|---------|----------------|-----------------|
-| Planejamento e Definição do Projeto| 1 dia   | 25/04/2024     | 25/04/2024      |
-| Configuração do Ambiente           | 1 dia   | 26/04/2024     | 26/04/2024      |
-| Criação de Usuário na API          | 1 dia   | 26/04/2024     | 26/04/2024      |
-| Implementação do Login             | 1 dia   | 27/04/2024     | 27/04/2024      |
-| Salvamento da Resposta JSON        | 1 dia   | 27/04/2024     | 27/04/2024      |
-| Escrita do README                  | 1 dia   | 28/04/2024     | 28/04/2024      |
-| Revisão e Testes Finais            | 1 dia   | 29/04/2024     | 29/04/2024      |
-| Entrega Final                      | 1 dia   | 30/04/2024     | 30/04/2024      |
-
----
 ## 🛠 Tecnologias
 
-As seguintes ferramentas foram usadas na construção do projeto:
-
-- [Python](https://www.python.org/)
-- [Requests](https://docs.python-requests.org/en/latest/)
-- [JSON](https://www.json.org/json-en.html)
-- [Git/GitHub](https://github.com/)
-
----
-## ▶️ Como Rodar o Projeto
-
-### Pré-requisitos
-- Python 3.13.1 instalado.
-- Biblioteca `requests` instalada (`pip install requests`).
-- Acesso à internet para interagir com a API.
-
-### Passo a Passo
-
-#### 1. Clone este repositório
-
-git clone https://github.com/seu-usuario/projeto-final-python.git
-
-#### 2. Acesse a pasta do projeto
-
-cd projeto-final-python
-
-#### 3. Execute os scripts Python
-
-Execute os scripts Python
-
-- Para criar um usuário:
-python -u "caminho\do\arquivo\criar_usuario.py"
-
-Para realizar login:
-python -u "caminho\do\arquivo\login.py"
-
-> **Observação:**) A funcionalidade de Armazenamento de Resposta também está implementada no script login.py. Esse script salva a resposta da API em um arquivo JSON estruturado após o login bem-sucedido.
----
-
-✨ **Funcionalidades**
-
-O projeto inclui as seguintes funcionalidades:
-
-- **Criação de Usuário:** Registra um novo usuário na API.
-- **Autenticação Segura:** Realiza login com credenciais válidas.
-- **Armazenamento de Resposta:** Salva a resposta da API em um arquivo JSON estruturado.
-- **Documentação:** Documentação clara para futuras contribuições.
+* Python 3.13.1
+* Selenium
+* Behave
+* Requests
+* JSON
+* Git/GitHub
 
 ---
 
-🚧 **Status do Projeto**
+## 📅 Cronograma
 
-> :construction: Projeto em construção :construction:
-
-Este projeto está em fase inicial e pode ser expandido com novas funcionalidades no futuro.
----
-
-## 🙌 Autores
-
-<table>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/Edcleryton">
-        <img src="https://avatars.githubusercontent.com/u/134793465?v=4" width="50px" alt="Edcleryton"/>
-      </a>
-      <br/>
-      <a href="https://github.com/Edcleryton">Edcleryton</a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/daniloMelin">
-        <img src="https://avatars.githubusercontent.com/u/127984038?v=4" width="50px" alt="Danilo Melin"/>
-      </a>
-      <br/>
-      <a href="https://github.com/daniloMelin">Danilo Melin</a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/Priest-San">
-        <img src="https://avatars.githubusercontent.com/u/204785556?v=4" width="50px" alt="Priest-San"/>
-      </a>
-      <br/>
-      <a href="https://github.com/Priest-San">Priest-San</a>
-    </td>
-  </tr>
-</table>
+| Atividade                           | Duração | Início     | Término    |
+| ----------------------------------- | ------- | ---------- | ---------- |
+| Planejamento e definição do projeto | 1 dia   | 08/05/2025 | 08/05/2025 |
+| Configuração do ambiente            | 1 dia   | 09/05/2025 | 09/05/2025 |
+| Criação de usuário na API           | 1 dia   | 10/05/2025 | 10/05/2025 |
+| Implementação do login              | 1 dia   | 11/05/2025 | 11/05/2025 |
+| Salvamento da resposta JSON         | 1 dia   | 12/05/2025 | 12/05/2025 |
+| Escrita do README                   | 1 dia   | 13/05/2025 | 13/05/2025 |
+| Revisão e testes finais             | 1 dia   | 14/05/2025 | 14/05/2025 |
+| Entrega final                       | 1 dia   | 15/05/2025 | 15/05/2025 |
 
 ---
 
-👥 **Contribuição**
+## 📝 Instalação
 
-Contribuições são sempre bem-vindas! Siga os passos abaixo para contribuir:
+1. Clone o repositório:
 
-1. Faça um fork deste repositório.
-2. Crie uma branch com sua feature ou correção:
    ```bash
-   git checkout -b feature/nova-funcionalidade
-3. Commit sua mudanças.   
-```bash
-git commit -m "feat: adicionar nova funcionalidade"
-```
-4. Envie sua alterações.
-```bash
-git push origin feature/nova-funcionalidade
-```
-5.Abra um Pull Request detalhando suas alterações.
+   git clone https://github.com/seu-usuario/projeto-final-python.git
+   cd projeto-final-python
+   ```
+2. Instale dependências:
 
-Para mais informações, consulte o arquivo `CONTRIBUTING.md`.
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ---
+
+## ▶️ Uso
+
+* Criar usuário:
+
+  ```bash
+  python criar_usuario.py
+  ```
+* Realizar login e salvar resposta:
+
+  ```bash
+  python login.py
+  ```
+
+---
+
+## ✅ Testes
+
+* Testes manuais descritos em `docs/test_plan.md`.
+* Automatizados com Behave (cenários em `features/`) e Selenium (steps em `steps/`).
+* Executar todos os testes:
+
+  ```bash
+  behave
+  ```
+
+---
+
+## ✨ Funcionalidades
+
+* Criação de usuário na API.
+* Autenticação segura via endpoint de login.
+* Armazenamento de resposta JSON.
+* Geração de relatórios de bugs e estatísticas de cobertura.
+
+---
+
+## 🛣 Roadmap
+
+* [ ] Testes de performance
+* [ ] Integração contínua (CI)
+* [ ] Testes de API contra dados reais
+* [ ] Dashboard de métricas de teste
+
+---
+
+## 🚧 Status do Projeto
+
+\:construction: Em desenvolvimento
+
+---
+
+## 👥 Contribuição
+
+1. Fork deste repositório
+2. `git checkout -b feature/nome-da-feature`
+3. `git commit -m "feat: descrição da feature"`
+4. `git push origin feature/nome-da-feature`
+5. Abra Pull Request detalhando mudanças
+
+---
+
+## ❓ FAQ
+
+**P: Como atualizar dependências?**
+R: Ajuste `requirements.txt` e rode `pip install -r requirements.txt`.
+
+**P: Onde encontro os testes manuais?**
+R: Em `docs/test_plan.md`.
+
+---
+
 ## 📜 Licença
 
-Este projeto está licenciado sob a MIT License.  
-Para mais informações, consulte o arquivo `LICENSE`.
+MIT License. Consulte o arquivo `LICENSE`.
 
-## 🎯 Conclusão
+---
 
-Este projeto foi desenvolvido com o objetivo de consolidar os conhecimentos adquiridos durante o módulo de Python do Instituto Joga Junto.  
-Esperamos que ele sirva como um exemplo claro e organizado para futuros desenvolvedores.
+## 👤 Autores e Contato
 
-Se você gostou do projeto, dê uma ⭐ no repositório! 😊
+* **Edcleryton** - [GitHub](https://github.com/Edcleryton) - [edcleryton.gabriel@gmail.com](mailto:edcleryton.gabriel@gmail.com)
+* **Danilo Melin** - [GitHub](https://github.com/daniloMelin)
+* **Priest-San** - [GitHub](https://github.com/Priest-San)
+
+---
+
+## 🏆 Créditos e Agradecimentos
+
+* W3Schools: tutoriais de Python Requests
+* Alura: guias de API em Python
+* Comunidade Selenium e Behave for examples
+
+---
 
 ## 🔗 Referências
 
-Aqui estão alguns recursos úteis que ajudaram na criação deste projeto:
+* [https://docs.python-requests.org](https://docs.python-requests.org)
+* [https://behave.readthedocs.io](https://behave.readthedocs.io)
+* [https://www.selenium.dev/docs/](https://www.selenium.dev/docs/)
 
-- [W3Schools - Python Requests Module](https://www.w3schools.com/python/module_requests.asp)
-- [Awari - Como Salvar um Arquivo JSON em Python](https://awari.com.br/python-como-salvar-um-arquivo-json/)
-- [Alura - Conhecendo a Biblioteca Requests](https://www.alura.com.br/conteudo/python-apis-conhecendo-biblioteca-requests?srsltid=AfmBOoq52NsjnkbJBtx0rsRjgUNU1334E774tHFPC2mZMhX8NOv0ehcN)
-- [YouTube - Tutorial de Python Requests](https://www.youtube.com/watch?v=Qm1soSIsAKM)
-- [YouTube - Como fazer requisição Request e Post no Python na Pratica](https://www.youtube.com/watch?v=rmKTXWxgSto)
+---
+
+## 🎯 Conclusão
+
+Projeto de QA em Python para o Instituto Joga Junto. Contribuições e sugestões são bem-vindas. Dê uma ⭐ no repositório!
+
+
+
 

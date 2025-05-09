@@ -111,12 +111,12 @@ Este repositório serve para validar e garantir a qualidade de todas as regras d
    ```bash
    python -m venv .venv
    source .venv/bin/activate  # ou .venv\Scripts\activate no Windows
- ´´´
+
 2. Defina variáveis de ambiente:
    ```bash
    export BASE_URL=https://projetofinal.jogajuntoinstituto.org/
    export API_URL=https://apipf.jogajuntoinstituto.org/swagger/ 
-   ```
+
 3. Instale dependências:
    ```bash
    pip install -r requirements.txt 

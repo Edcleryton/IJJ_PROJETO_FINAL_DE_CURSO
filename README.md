@@ -1,4 +1,3 @@
-# 🚀 Projeto final do curso QA Avançado - Instituto Joga Junto 🐍
 
 ![Build](https://img.shields.io/badge/build-n/a-lightgrey)
 ![Coverage](https://img.shields.io/badge/coverage-0%25-lightgrey)
@@ -6,7 +5,7 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 <h1 align="center">
-  <a href="https://github.com/seu-usuario/projeto-final-python">🔗 Projeto Final Python</a>
+  <a href="https://github.com/seu-usuario/projeto-final-python">🚀 Projeto final do curso QA Avançado - Instituto Joga Junto 🐍</a>
 </h1>
 <p align="center">Projeto final do curso QA Avançado, focado na garantia de qualidade do sistema de controle de estoque do Instituto Joga Junto. Reúne planos de teste, casos de teste manuais e automatizados (Selenium e Behave), relatórios de bugs, estatísticas de testes e cobertura. O principal objetivo é validar requisitos, criar plano de testes completo e gerar estatísticas de bugs para a próxima sprint.</p>
 

@@ -4,6 +4,7 @@
 ![Python](https://img.shields.io/badge/python-3.13.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+
 <h1 align="center">
   <a href="https://github.com/seu-usuario/projeto-final-python">🚀 Projeto final do curso QA Avançado - Instituto Joga Junto 🐍</a>
 </h1>

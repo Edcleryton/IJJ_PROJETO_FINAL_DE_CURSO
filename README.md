@@ -16,14 +16,14 @@
 
 * [Introdução](#introdução)
 * [Descrição](#descrição)
-* [Tecnologias](#tecnologias)
 * [Cronograma](#cronograma)
+* [Tecnologias](#tecnologias)
+* [configuração](#configuração)
 * [Instalação](#instalação)
 * [Uso](#uso)
 * [Testes](#testes)
 * [Cobertura](#cobertura)
 * [Funcionalidades](#funcionalidades)
-* [Roadmap](#roadmap)
 * [Status do Projeto](#status-do-projeto)
 * [Contribuição](#contribuição)
 * [FAQ](#faq)
@@ -80,6 +80,20 @@ Este repositório serve para validar e garantir a qualidade de todas as regras d
 
 ---
 
+## 📅 Cronograma
+
+| Atividade                                                             | Duração | Início     | Término    |
+| --------------------------------------------------------------------- | ------- | ---------- | ---------- |
+| Análise da documentação, criação do repositório, definição dos testes | 1 dia   | 08/05/2025 | 08/05/2025 | 
+| Redação do plano de testes, início dos testes manuais                 | 1 dia   | 09/05/2025 | 08/05/2025 |
+| Continuação dos testes manuais + testes de API com requests           | 1 dia   | 10/05/2025 | 08/05/2025 |
+| Implementação de testes automatizados viáveis com Python              | 1 dia   | 11/05/2025 | 09/05/2025 |
+| Finalização do plano de teste e testes automatizados                  | 1 dia   | 12/05/2025 | 10/05/2025 |
+| Execução completa dos testes, coleta de evidências                    | 1 dia   | 13/05/2025 | 11/05/2025 |
+| Finalização de relatórios e bugreport                                 | 1 dia   | 14/05/2025 | 13/05/2025 |
+|Revisão final, entrega e  apresentação                                 | 1 dia   | 15/05/2025 | 14/05/2025 |
+
+---
 ## 🛠 Tecnologias
 
 * Python 3.13.1
@@ -107,22 +121,6 @@ Este repositório serve para validar e garantir a qualidade de todas as regras d
 3. Instale dependências:
    ```bash
    pip install -r requirements.txt 
-
----
-
-## 📅 Cronograma
-
-| Atividade                                                             | Duração | Início     | Término    |
-| --------------------------------------------------------------------- | ------- | ---------- | ---------- |
-| Análise da documentação, criação do repositório, definição dos testes | 1 dia   | 08/05/2025 | 08/05/2025 | 
-| Redação do plano de testes, início dos testes manuais                 | 1 dia   | 09/05/2025 | 08/05/2025 |
-| Continuação dos testes manuais + testes de API com requests           | 1 dia   | 10/05/2025 | 08/05/2025 |
-| Implementação de testes automatizados viáveis com Python              | 1 dia   | 11/05/2025 | 09/05/2025 |
-| Finalização do plano de teste e testes automatizados                  | 1 dia   | 12/05/2025 | 10/05/2025 |
-| Execução completa dos testes, coleta de evidências                    | 1 dia   | 13/05/2025 | 11/05/2025 |
-| Finalização de relatórios e bugreport                                 | 1 dia   | 14/05/2025 | 13/05/2025 |
-|Revisão final, entrega e  apresentação                                 | 1 dia   | 15/05/2025 | 14/05/2025 |
-
 
 ---
 
@@ -311,9 +309,10 @@ Projeto de QA em Python para o Instituto Joga Junto. Contribuições e sugestõe
 
 ## 🔗 Referências
 
-* [https://docs.python-requests.org](https://docs.python-requests.org)
-* [https://behave.readthedocs.io](https://behave.readthedocs.io)
-* [https://www.selenium.dev/docs/](https://www.selenium.dev/docs/)
+* [Python Requests](https://docs.python-requests.org)
+* [Behave Docs](https://behave.readthedocs.io)
+* [Selenium Docs](https://www.selenium.dev/docs/)
+* [Guia de Markdown da Adobe](https://experienceleague.adobe.com/pt-br/docs/contributor/contributor-guide/writing-essentials/markdown)
 
 ---
 

@@ -1,0 +1,27 @@
+# Arquivos de cache Python
+__pycache__/
+*.py[cod]
+
+# Arquivos de ambiente com segredos (variáveis de ambiente)
+.env
+.env.*
+
+# Configurações de IDEs (exemplo VSCode, PyCharm)
+.vscode/
+.idea/
+
+# Drivers do WebDriver baixados localmente
+drivers/
+webdriver_manager/
+
+# Arquivos temporários e logs
+*.log
+*.tmp
+
+# Diretórios de reports, screenshots (se quiser ignorar)
+reports/screenshots/
+
+# Arquivos compilados
+*.egg-info/
+dist/
+build/

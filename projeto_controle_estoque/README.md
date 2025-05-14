@@ -4,6 +4,7 @@
 ![Python](https://img.shields.io/badge/python-3.13.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+
 <h1 align="center">
   <a href="https://github.com/seu-usuario/projeto-final-python">🚀 Projeto final do curso QA Avançado - Instituto Joga Junto 🐍</a>
 </h1>
@@ -31,6 +32,7 @@
 * [Créditos e Agradecimentos](#créditos-e-agradecimentos)
 * [Conclusão](#conclusão)
 * [Referências](#referências)
+
 
 ---
 
@@ -293,9 +295,6 @@ R: Em `docs/test_plan.md`.
 ## 🏆 Créditos e Agradecimentos
 
 * Instituto Joga Junto: curso de QA básico e avançado.
-* W3Schools: tutoriais de Python Requests
-* Alura: guias de API em Python
-* Comunidade Selenium e Behave for examples
 
 ---
 
@@ -313,3 +312,5 @@ Projeto de QA em Python para o Instituto Joga Junto. Contribuições e sugestõe
 * [Guia de Markdown da Adobe](https://experienceleague.adobe.com/pt-br/docs/contributor/contributor-guide/writing-essentials/markdown)
 
 ---
+
+

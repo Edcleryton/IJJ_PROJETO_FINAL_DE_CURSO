@@ -295,9 +295,6 @@ R: Em `docs/test_plan.md`.
 ## 🏆 Créditos e Agradecimentos
 
 * Instituto Joga Junto: curso de QA básico e avançado.
-* W3Schools: tutoriais de Python Requests
-* Alura: guias de API em Python
-* Comunidade Selenium e Behave for examples
 
 ---
 

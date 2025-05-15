@@ -1,6 +1,6 @@
 # Testes da API Joga Junto  1.0.0
 
-Este diretório contém os artefatos para teste da API [Nome da API] utilizando Postman e Newman.
+Este diretório contém os artefatos para teste da API [API Joga Junto  1.0.0] utilizando Postman e Newman.
 
 ## Pré-requisitos
 

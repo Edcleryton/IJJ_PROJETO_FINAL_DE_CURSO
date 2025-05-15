@@ -36,8 +36,8 @@ Módulos integrados:
 | Testes de Interface       | Selenium WebDriver + ChromeDriver       |
 | Gerenciamento de Defeitos | Google Sheets                           |
 | Relatórios                | Markdown + tabulate                     |
-| Ambiente de Teste         | https://projetofinal.jogajuntoinstituto.org |
-| Swagger da API            | https://apipf.jogajuntoinstituto.org/swagger/ |
+| Ambiente de Teste         | https://projetofinal.org                |
+| Swagger da API            | https://apipf.example/swagger/          |
 
 ---
 

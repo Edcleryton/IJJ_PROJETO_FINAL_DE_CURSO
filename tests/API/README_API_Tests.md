@@ -1,4 +1,4 @@
-# Testes de API para [Nome da API, ex: IJJ Estoque]
+# Testes de API para [Joga Junto API 1.0.0]
 
 Este diretório contém os artefatos para teste da API [Nome da API] utilizando Postman e Newman.
 

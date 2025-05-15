@@ -147,8 +147,8 @@ IJJ\_PROJETO\_FINAL\_DE\_CURSO/
     Dentro da pasta `tests/automacao_ui_behave/`, crie um arquivo chamado `.env` com o seguinte conteúdo:
 
     ```env
-    BASE_URL="[https://projetofinal.jogajuntoinstituto.org/](https://projetofinal.jogajuntoinstituto.org/)"
-    API_URL="[https://apipf.jogajuntoinstituto.org/swagger/](https://apipf.jogajuntoinstituto.org/swagger/)"
+    BASE_URL="[https://projetofinal.lojadeestoque.org/](https://projetofinal.lojadeestoque.org/)"
+    API_URL="[https://apipf.lojadeestoque.org/swagger/](https://apipf.lojadeestoque.org/swagger/)"
     ```
 
     *Os scripts de automação carregarão essas variáveis. Considere adicionar `.env` ao seu `.gitignore` se ele contiver informações sensíveis no futuro.*

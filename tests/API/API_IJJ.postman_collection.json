@@ -1,0 +1,2558 @@
+{
+	"info": {
+		"_postman_id": "7a47fa73-3302-4560-961b-f2ae8ba14deb",
+		"name": "API_IJJ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39009191"
+	},
+	"item": [
+		{
+			"name": "status_api",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Scripts para a requisição GET {{API-IJJ}}/api\r",
+							"// Objetivo: Validar se a API está no ar e respondendo corretamente.\r",
+							"// Baseado no teste API-0001 do Plano de Testes.\r",
+							"\r",
+							"pm.test(\"Status code is 200 OK\", function () {\r",
+							"    // Valida se o código de status da resposta HTTP é 200.\r",
+							"    // Conforme ISO/IEC 25010 - Confiabilidade (Maturidade): O sistema responde como esperado.\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"    // Valida se o Postman consegue interpretar a resposta como um JSON válido.\r",
+							"    // Ajuda a garantir que a API está aderindo ao formato de dados esperado.\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains the 'message' property\", function () {\r",
+							"    // Valida se o corpo da resposta JSON possui a chave (propriedade) \"message\".\r",
+							"    // Conforme ISO/IEC 25010 - Adequação Funcional: A API fornece a informação esperada.\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.have.property('message');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"API status message is correct\", function () {\r",
+							"    // Valida se o valor da propriedade \"message\" é exatamente \"Api is up and running!\".\r",
+							"    // Conforme ISO/IEC 25010 - Adequação Funcional (Corretude): A mensagem específica está correta.\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody.message).to.eql(\"Api is up and running!\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is 'application/json'\", function () {\r",
+							"    // Valida se o cabeçalho Content-Type da resposta indica que o conteúdo é JSON.\r",
+							"    // Importante para conformidade com padrões HTTP e para clientes da API.\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is within acceptable limits\", function () {\r",
+							"    // Valida se o tempo de resposta da API é menor que um limite aceitável (ex: 500ms).\r",
+							"    // Conforme ISO/IEC 25010 - Eficiência de Desempenho (Comportamento em relação ao tempo).\r",
+							"    // Ajuste o valor (500) conforme a necessidade do seu projeto.\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500); // Tempo em milissegundos\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API-IJJ}}/api",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registro - sucesso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Teste API-0007: Registro de Usuário Válido\r",
+							"pm.test(\"Status code is 200 OK\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains 'msg' property for successful registration\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.have.property('msg');\r",
+							"    pm.expect(responseBody.msg).to.be.a('string').and.to.not.be.empty;\r",
+							"    // Se a mensagem for sempre a mesma, ex: \"Usuário registrado com sucesso.\"\r",
+							"    // pm.expect(responseBody.msg).to.eql(\"Usuário registrado com sucesso.\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is 'application/json'\", function () {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is within acceptable limits for creation\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500); // Ajuste conforme necessário\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"1\",\r\n  \"password\": \"macacos12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/register",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registro -  email duplicado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Scripts para POST /register (Email Duplicado)\r",
+							"// Baseado no teste API-0008 do Plano de Testes.\r",
+							"\r",
+							"pm.test(\"Status code is 409 Conflict or 400 Bad Request\", function () {\r",
+							"    // A API pode retornar 409 (Conflict) que é mais específico, ou 400 (Bad Request).\r",
+							"    // Verifique qual a sua API retorna e ajuste se necessário.\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([409, 400], \"Esperado status 409 ou 400 para email duplicado\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains an error message for duplicate email\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.have.property('msg'); // ou 'error', 'message', etc.\r",
+							"    // A mensagem exata pode variar. Verifique a resposta real da sua API.\r",
+							"    // Ex: pm.expect(responseBody.msg).to.include(\"E-mail já cadastrado\");\r",
+							"    pm.expect(responseBody.msg).to.be.a('string').and.to.not.be.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is 'application/json'\", function () {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"1\",\r\n  \"password\": \"macacos12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/register",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registro - email em branco",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Scripts para POST /register (Email em Branco)\r",
+							"// Baseado no teste API-0009 do Plano de Testes.\r",
+							"\r",
+							"pm.test(\"Status code is 422 Unprocessable Entity or 400 Bad Request\", function () {\r",
+							"    // 422 é comum para erros de validação semântica, 400 para requisições malformadas.\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([422, 400], \"Esperado status 422 ou 400 para campo obrigatório ausente/inválido\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains an error message for missing/empty email\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.have.property('msg'); // ou 'error', 'validationErrors', etc.\r",
+							"    // Verifique a mensagem exata. Ex: pm.expect(responseBody.msg).to.include(\"O campo e-mail é obrigatório\");\r",
+							"    pm.expect(responseBody.msg).to.be.a('string').and.to.not.be.empty;\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"\",\r\n  \"password\": \"macacos12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/register",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registro - senha em branco",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Scripts para POST /register (Email em Branco)\r",
+							"// Baseado no teste API-0009 do Plano de Testes.\r",
+							"\r",
+							"pm.test(\"Status code is 422 Unprocessable Entity or 400 Bad Request\", function () {\r",
+							"    // 422 é comum para erros de validação semântica, 400 para requisições malformadas.\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([422, 400], \"Esperado status 422 ou 400 para campo obrigatório ausente/inválido\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains an error message for missing/empty password\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.have.property('msg'); // ou 'error', 'validationErrors', etc.\r",
+							"    // Verifique a mensagem exata. Ex: pm.expect(responseBody.msg).to.include(\"O campo senha é obrigatório\");\r",
+							"    pm.expect(responseBody.msg).to.be.a('string').and.to.not.be.empty;\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"maqacos@ijj.org\",\r\n  \"password\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/register",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registro - email formato invalido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Scripts para POST /register (Email Formato Inválido)\r",
+							"// Baseado no teste API-0010 do Plano de Testes.\r",
+							"\r",
+							"pm.test(\"Status code is 400 Bad Request or 422 Unprocessable Entity\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 422], \"Esperado status 400 ou 422 para formato de email inválido\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains an error message for invalid email format\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.have.property('msg'); // ou 'error', etc.\r",
+							"    // Verifique a mensagem exata. Ex: pm.expect(responseBody.msg).to.include(\"Formato de e-mail inválido\");\r",
+							"    pm.expect(responseBody.msg).to.be.a('string').and.to.not.be.empty;\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"1asklfkjf\",\r\n  \"password\": \"macacos12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/register",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login - sucesso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Scripts para a requisição POST /login (Login com Sucesso)\r",
+							"// Baseado no teste API-0003 do Plano de Testes e na resposta real observada.\r",
+							"\r",
+							"pm.test(\"Status code is 200 OK\", function () {\r",
+							"    // Valida se o código de status da resposta HTTP é 200.\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"    // Valida se o Postman consegue interpretar a resposta como um JSON válido.\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains 'msg', 'token', and 'user' properties\", function () {\r",
+							"    // Valida a presença das chaves principais no corpo da resposta.\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.have.property('msg');\r",
+							"    pm.expect(responseBody).to.have.property('token');\r",
+							"    pm.expect(responseBody).to.have.property('user');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Success message ('msg') is correct\", function () {\r",
+							"    // Valida o conteúdo exato da mensagem de sucesso.\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody.msg).to.eql(\"Usuário logado com sucesso!\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Token ('token') is a non-empty string\", function () {\r",
+							"    // Valida que o token JWT é uma string e não está vazio.\r",
+							"    // Não validamos o conteúdo do token em si aqui, apenas sua presença e tipo.\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody.token).to.be.a('string').and.to.not.be.empty;\r",
+							"    // Opcional: verificar se o token parece um JWT (3 partes separadas por '.')\r",
+							"    pm.expect(responseBody.token.split('.').length).to.equal(3, \"Token should be in JWT format (xxx.yyy.zzz)\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"User object ('user') contains 'idusuarios' and 'email'\", function () {\r",
+							"    // Valida a estrutura do objeto 'user'.\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody.user).to.be.an('object');\r",
+							"    pm.expect(responseBody.user).to.have.property('idusuarios');\r",
+							"    pm.expect(responseBody.user).to.have.property('email');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"User 'idusuarios' is a number and 'email' is a string\", function () {\r",
+							"    // Valida os tipos de dados dentro do objeto 'user'.\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody.user.idusuarios).to.be.a('number');\r",
+							"    pm.expect(responseBody.user.email).to.be.a('string');\r",
+							"    // Opcional: Validar o email retornado se você souber qual email foi usado para logar\r",
+							"    // pm.expect(responseBody.user.email).to.eql(\"maqacos@ijj.org\"); // Ajuste se necessário\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is 'application/json'\", function () {\r",
+							"    // Valida o cabeçalho Content-Type.\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is within acceptable limits\", function () {\r",
+							"    // Teste básico de desempenho.\r",
+							"    // Ajuste o valor (ex: 1000ms) conforme os requisitos do seu projeto.\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000); // Tempo em milissegundos\r",
+							"});\r",
+							"\r",
+							"// Guardar o token e o id do usuário para uso em requisições subsequentes (MUITO IMPORTANTE!)\r",
+							"// Isso permite que você use o token obtido aqui em outras requisições que exigem autenticação.\r",
+							"const responseBody = pm.response.json();\r",
+							"if (responseBody.token && responseBody.user && responseBody.user.idusuarios) {\r",
+							"    pm.collectionVariables.set(\"authToken\", responseBody.token);\r",
+							"    pm.collectionVariables.set(\"userId\", responseBody.user.idusuarios);\r",
+							"    console.log(\"Token de autenticação salvo na variável de coleção 'authToken'.\");\r",
+							"    console.log(\"ID do usuário salvo na variável de coleção 'userId'.\");\r",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"maqacos@ijj.org\",\r\n  \"password\": \"macacos12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/login",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login - senha incorreta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Scripts para POST /login (Senha Incorreta)\r",
+							"// Validando o COMPORTAMENTO ESPERADO (Status 401 Unauthorized).\r",
+							"\r",
+							"pm.test(\"Status code SHOULD BE 401 Unauthorized for incorrect password\", function () {\r",
+							"    // Este teste FALHARÁ se a API retornar 200 OK, indicando o BUG.\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains the 'msg' property\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.have.property('msg');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Error message ('msg') indicates incorrect password\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody.msg).to.eql(\"Senha incorreta\"); // Ou a mensagem exata que a API retorna\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response should NOT contain a 'token' or 'user' object\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.not.have.property('token', \"Token should not be present on failed login\");\r",
+							"    pm.expect(responseBody).to.not.have.property('user', \"'user' object should not be present on failed login\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is 'application/json'\", function () {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"maqacos@ijj.org\",\r\n  \"password\": \"mac3acos12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/login",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login - email inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Scripts para POST /login (Email Inexistente)\r",
+							"// Validando o COMPORTAMENTO ESPERADO (Status 401 Unauthorized).\r",
+							"\r",
+							"pm.test(\"Status code SHOULD BE 401 Unauthorized for non-existent email\", function () {\r",
+							"    // Este teste FALHARÁ se a API retornar 200 OK, indicando o BUG.\r",
+							"    // Poderia ser também 404, mas 401 é mais comum para não vazar informação.\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains the 'msg' property\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.have.property('msg');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Error message ('msg') indicates user not found\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody.msg).to.eql(\"Usuario nao encontrado com email informado\"); // Ou a mensagem exata\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response should NOT contain a 'token' or 'user' object\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.not.have.property('token');\r",
+							"    pm.expect(responseBody).to.not.have.property('user');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is 'application/json'\", function () {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"maqacos@ijj.orEg\",\r\n  \"password\": \"macacos12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/login",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login - email em branco",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Scripts para POST /login (Email em Branco)\r",
+							"// Validando o COMPORTAMENTO ESPERADO (Status 400 ou 422, e mensagem relevante).\r",
+							"\r",
+							"pm.test(\"Status code SHOULD BE 400 Bad Request or 422 Unprocessable Entity for blank email\", function () {\r",
+							"    // Este teste FALHARÁ se a API retornar 200 OK, indicando o BUG.\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 422], \"Expected status 400 or 422 for blank email\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"    // Mesmo em erro, a API parece retornar JSON, então vamos validar isso.\r",
+							"    // Se a API retornasse um erro não-JSON, este teste falharia, o que também seria informativo.\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body SHOULD contain a relevant error message for blank email\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.have.property('msg'); // Ou 'error', 'message', 'validationErrors', etc.\r",
+							"    \r",
+							"    // Validação da mensagem:\r",
+							"    // A mensagem ATUAL (\"Senha incorreta\") está ERRADA para este cenário.\r",
+							"    // O teste abaixo vai FALHAR devido à mensagem errada, o que é bom para evidenciar o bug.\r",
+							"    // Quando o bug for corrigido, a API deverá retornar uma mensagem como \"E-mail é obrigatório\"\r",
+							"    // e você precisará ATUALIZAR A MENSAGEM ESPERADA AQUI.\r",
+							"    pm.expect(responseBody.msg).to.not.eql(\"Senha incorreta\", \"Error message is INCORRECT and irrelevant for a blank email scenario.\");\r",
+							"    // Idealmente, você validaria a mensagem correta, por exemplo:\r",
+							"    // pm.expect(responseBody.msg).to.include(\"e-mail é obrigatório\"); // Ou a mensagem que a API DEVERIA retornar\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body message SHOULD NOT be 'Senha incorreta'\", function() {\r",
+							"    // Teste específico para garantir que a mensagem enganosa não está presente.\r",
+							"    // Este teste passará se a mensagem for diferente de \"Senha incorreta\".\r",
+							"    // Combinado com a falha no teste de status code, reforça o bug.\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody.msg).to.not.equal(\"Senha incorreta\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response should NOT contain a 'token' or 'user' object\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.not.have.property('token');\r",
+							"    pm.expect(responseBody).to.not.have.property('user');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is 'application/json'\", function () {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"\",\r\n  \"password\": \"macacos12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/login",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login - senha em branco",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Scripts para POST /login (Senha em Branco)\r",
+							"// Validando o COMPORTAMENTO ESPERADO (Status 400 ou 422, e mensagem relevante).\r",
+							"\r",
+							"pm.test(\"Status code SHOULD BE 400 Bad Request or 422 Unprocessable Entity for blank password\", function () {\r",
+							"    // Este teste FALHARÁ se a API retornar 200 OK, indicando o BUG.\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 422], \"Expected status 400 or 422 for blank password\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"    // Mesmo em erro, a API parece retornar JSON.\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body SHOULD contain a relevant error message for blank password\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.have.property('msg'); // Ou 'error', 'message', 'validationErrors', etc.\r",
+							"    \r",
+							"    // Validação da mensagem:\r",
+							"    // A mensagem ATUAL (\"Senha incorreta\") está ERRADA para este cenário.\r",
+							"    // O teste abaixo vai FALHAR devido à mensagem errada, o que é bom para evidenciar o bug.\r",
+							"    // Quando o bug for corrigido, a API deverá retornar uma mensagem como \"Senha é obrigatória\"\r",
+							"    // e você precisará ATUALIZAR A MENSAGEM ESPERADA AQUI.\r",
+							"    pm.expect(responseBody.msg).to.not.eql(\"Senha incorreta\", \"Error message is INCORRECT and irrelevant for a blank password scenario.\");\r",
+							"    // Idealmente, você validaria a mensagem correta, por exemplo:\r",
+							"    // pm.expect(responseBody.msg).to.include(\"senha é obrigatória\"); // Ou a mensagem que a API DEVERIA retornar\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body message SHOULD NOT be 'Senha incorreta'\", function() {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody.msg).to.not.equal(\"Senha incorreta\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response should NOT contain a 'token' or 'user' object\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.not.have.property('token');\r",
+							"    pm.expect(responseBody).to.not.have.property('user');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is 'application/json'\", function () {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"maqacos@ijj.org\",\r\n  \"password\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/login",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login - payload json vazio",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Scripts para POST /login (Payload JSON Vazio)\r",
+							"// Validando o COMPORTAMENTO ESPERADO (Status 400 ou 422, e mensagem específica).\r",
+							"\r",
+							"pm.test(\"Status code SHOULD BE 400 Bad Request or 422 Unprocessable Entity for empty JSON payload\", function () {\r",
+							"    // Este teste FALHARÁ GRAVEMENTE se a API retornar 500, indicando o BUG.\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 422], \"Expected status 400 or 422 for empty JSON payload, but got 500!\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format (even for errors)\", function () {\r",
+							"    // Mesmo em erro, esperamos que a API tente retornar JSON.\r",
+							"    // Se o 500 retornar HTML ou texto, este teste também falhará.\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body SHOULD contain a specific error message about missing fields\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    // A chave da mensagem de erro pode ser 'msg', 'error', 'errors', 'message', etc.\r",
+							"    // Ajuste 'error' se a API, quando corrigida, usar outra chave.\r",
+							"    pm.expect(responseBody).to.have.property('error'); // ou 'msg'\r",
+							"    \r",
+							"    // Validação da mensagem:\r",
+							"    // A mensagem ATUAL (\"Erro ao fazer login\") é GENÉRICA e INSUFICIENTE.\r",
+							"    // O teste abaixo (com .to.not.eql) passará se a mensagem for qualquer coisa diferente,\r",
+							"    // mas o ponto principal é que ela deveria ser específica sobre os campos faltantes.\r",
+							"    pm.expect(responseBody.error).to.not.eql(\"Erro ao fazer login\", \"Error message is too generic. Expected details about missing fields.\");\r",
+							"    \r",
+							"    // Quando o bug for corrigido, a API deverá retornar uma mensagem como:\r",
+							"    // \"Os campos email e password são obrigatórios\"\r",
+							"    // e você precisará ATUALIZAR A MENSAGEM ESPERADA AQUI, por exemplo:\r",
+							"    // pm.expect(responseBody.msg).to.include(\"email e password são obrigatórios\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response should NOT contain a 'token' or 'user' object\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.not.have.property('token');\r",
+							"    pm.expect(responseBody).to.not.have.property('user');\r",
+							"});\r",
+							"\r",
+							"// O Content-Type para um 500 pode variar, às vezes é HTML.\r",
+							"// Se for JSON, podemos validar. Se for HTML, este teste falhará, o que também é informativo.\r",
+							"\r",
+							"pm.test(\"Content-Type header is 'application/json' (if error response is JSON)\", function () {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/login",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login - payload nao JSON (texto)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Scripts para POST /login (Payload Não-JSON - Texto Puro)\r",
+							"// Validando o COMPORTAMENTO ESPERADO (Status 400 ou 415, e mensagem específica).\r",
+							"\r",
+							"pm.test(\"Status code SHOULD BE 400 Bad Request or 415 Unsupported Media Type for non-JSON payload\", function () {\r",
+							"    // Este teste FALHARÁ GRAVEMENTE se a API retornar 500, indicando o BUG.\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 415], \"Expected status 400 or 415 for non-JSON payload, but got 500!\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format (even for this type of error, if API handles it gracefully)\", function () {\r",
+							"    // A API ATUALMENTE retorna JSON para o 500, mas quando corrigida, pode retornar JSON ou texto/HTML.\r",
+							"    // Se a resposta corrigida for JSON, este teste é válido.\r",
+							"    try {\r",
+							"        JSON.parse(pm.response.text());\r",
+							"        pm.expect(true).to.be.true; // Confirma que é parseável como JSON\r",
+							"    } catch (e) {\r",
+							"        pm.expect.fail(\"Response was not valid JSON, which might be okay for certain error types (e.g., 415 with text/html response). Actual response: \" + pm.response.text());\r",
+							"    }\r",
+							"    // Ou, se você espera JSON: pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body SHOULD contain a specific error message about invalid payload format\", function () {\r",
+							"    // Este teste é mais complexo porque a resposta do 500 é genérica.\r",
+							"    // Quando o bug for corrigido, a mensagem deve ser específica.\r",
+							"    const responseText = pm.response.text();\r",
+							"    let responseBody;\r",
+							"    let isJsonResponse = false;\r",
+							"    try {\r",
+							"        responseBody = JSON.parse(responseText);\r",
+							"        isJsonResponse = true;\r",
+							"    } catch (e) {\r",
+							"        // Não é JSON, o que pode ser esperado para um 415, por exemplo.\r",
+							"    }\r",
+							"\r",
+							"    if (isJsonResponse) {\r",
+							"        // Se for JSON, esperamos uma chave como 'error' ou 'msg'\r",
+							"        const errorKey = responseBody.error ? 'error' : (responseBody.msg ? 'msg' : null);\r",
+							"        pm.expect(errorKey).to.not.be.null;\r",
+							"        if (errorKey) {\r",
+							"            pm.expect(responseBody[errorKey]).to.not.eql(\"Erro ao fazer login\", \"Error message is too generic. Expected details about invalid payload format.\");\r",
+							"            // Exemplo de mensagem esperada quando corrigido:\r",
+							"            // pm.expect(responseBody[errorKey]).to.include(\"Formato de requisição inválido\");\r",
+							"        }\r",
+							"    } else {\r",
+							"        // Se não for JSON, o corpo do texto pode conter a mensagem de erro (ex: para um 415)\r",
+							"        // pm.expect(responseText).to.include(\"Unsupported Media Type\"); // Ajuste conforme o esperado\r",
+							"        console.warn(\"Response was not JSON. Body: \" + responseText);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    email=teste@teste.com&password=123\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/login",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consulta de produtos - sucesso lista com produtos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Scripts para GET / (Consulta Produtos - Sucesso com Produtos)\r",
+							"\r",
+							"pm.test(\"Status code is 200 OK\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is an array\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Products array is not empty (as products are expected)\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.not.be.empty; // Se este teste for para quando HÁ produtos\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Each product in the array has the required fields and correct types\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    if (responseBody.length > 0) {\r",
+							"        responseBody.forEach(function(product) {\r",
+							"            pm.expect(product).to.have.all.keys('idprodutos', 'name', 'description', 'price', 'category', 'shipment', 'image', 'idusuario');\r",
+							"            pm.expect(product.idprodutos).to.be.a('number');\r",
+							"            pm.expect(product.name).to.be.a('string');\r",
+							"            pm.expect(product.description).to.be.a('string');\r",
+							"            pm.expect(product.price).to.be.a('string'); // Conforme observado\r",
+							"            pm.expect(product.category).to.be.a('string');\r",
+							"            pm.expect(product.shipment).to.be.a('string'); // Conforme observado\r",
+							"            pm.expect(product.image).to.be.a('string'); // Ou null se puder ser nulo\r",
+							"            pm.expect(product.idusuario).to.be.a('number');\r",
+							"            \r",
+							"            // Valida se o idusuario do produto corresponde ao usuário logado (se a variável de coleção 'userId' foi setada no login)\r",
+							"            if (pm.collectionVariables.get(\"userId\")) {\r",
+							"                pm.expect(product.idusuario).to.eql(parseInt(pm.collectionVariables.get(\"userId\")), \"Product's idusuario should match logged in user's ID\");\r",
+							"            }\r",
+							"        });\r",
+							"    } else {\r",
+							"        // Se o array estiver vazio, este teste passa trivialmente.\r",
+							"        // O teste \"Products array is not empty\" cuid"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyODEsImlhdCI6MTc0NzMyNjY1MSwiZXhwIjoxNzQ3NDEzMDUxfQ.7NxygmQGgLKUooGZio4YgRgGX-nFcpCcwS83eyp97_Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consulta de produtos - sucesso lista vazia",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Scripts para GET / (Consulta Produtos - Sucesso Lista Vazia)\r",
+							"\r",
+							"pm.test(\"Status code is 200 OK\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is an empty array\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.be.an('array').and.to.be.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is 'application/json'\", function () {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is within acceptable limits\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyODEsImlhdCI6MTc0NzMyNjY1MSwiZXhwIjoxNzQ3NDEzMDUxfQ.7NxygmQGgLKUooGZio4YgRgGX-nFcpCcwS83eyp97_Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consulta de produtos - sem token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Scripts para GET / (Consulta Produtos - SEM AUTENTICAÇÃO)\r",
+							"\r",
+							"pm.test(\"Status code is 403 Forbidden (Current API behavior)\", function () {\r",
+							"    // O plano esperava 401, mas a API retorna 403. Validamos o comportamento atual.\r",
+							"    // Uma sugestão de melhoria/bug pode ser registrada para alinhar com 401 e resposta JSON.\r",
+							"    pm.response.to.have.status(403);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is the plain text 'Forbidden'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.eql(\"Forbidden\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header indicates plain text or as observed\", function () {\r",
+							"    // Verifique o Content-Type real para este erro e ajuste.\r",
+							"    // Ex: pm.expect(pm.response.headers.get('Content-Type')).to.include('text/plain');\r",
+							"    // Ex: pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html');\r",
+							"    // Se não houver Content-Type ou for inesperado, este teste pode precisar de ajuste ou ser removido.\r",
+							"    // Para o exemplo, vamos assumir text/plain se for o caso:\r",
+							"    const contentType = pm.response.headers.get('Content-Type');\r",
+							"    if (contentType) { // Só validar se o header existir\r",
+							"        pm.expect(contentType).to.include('text/plain'); // AJUSTE SE NECESSÁRIO\r",
+							"    } else {\r",
+							"        console.warn(\"Content-Type header was not present in the 403 response.\");\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response should NOT contain product data\", function () {\r",
+							"    const responseText = pm.response.text().toLowerCase();\r",
+							"    pm.expect(responseText).to.not.include('idprodutos');\r",
+							"    pm.expect(responseText).to.not.include('name');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consulta de produtos - token invalido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Scripts para GET / (Consulta Produtos - SEM AUTENTICAÇÃO)\r",
+							"\r",
+							"pm.test(\"Status code is 403 Forbidden (Current API behavior)\", function () {\r",
+							"    // O plano esperava 401, mas a API retorna 403. Validamos o comportamento atual.\r",
+							"    // Uma sugestão de melhoria/bug pode ser registrada para alinhar com 401 e resposta JSON.\r",
+							"    pm.response.to.have.status(403);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is the plain text 'Forbidden'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.eql(\"Forbidden\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header indicates plain text or as observed\", function () {\r",
+							"    // Verifique o Content-Type real para este erro e ajuste.\r",
+							"    // Ex: pm.expect(pm.response.headers.get('Content-Type')).to.include('text/plain');\r",
+							"    // Ex: pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html');\r",
+							"    // Se não houver Content-Type ou for inesperado, este teste pode precisar de ajuste ou ser removido.\r",
+							"    // Para o exemplo, vamos assumir text/plain se for o caso:\r",
+							"    const contentType = pm.response.headers.get('Content-Type');\r",
+							"    if (contentType) { // Só validar se o header existir\r",
+							"        pm.expect(contentType).to.include('text/plain'); // AJUSTE SE NECESSÁRIO\r",
+							"    } else {\r",
+							"        console.warn(\"Content-Type header was not present in the 403 response.\");\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response should NOT contain product data\", function () {\r",
+							"    const responseText = pm.response.text().toLowerCase();\r",
+							"    pm.expect(responseText).to.not.include('idprodutos');\r",
+							"    pm.expect(responseText).to.not.include('name');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyODEsImlhdCI6MTc0NzMyNjY1MSwiZXhwIjoxNzQ3NDEzMDUxfQ.7NxygmQGgLKUooGZio4YgRgGX-nFcpCcwS83eyp97_Q2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cadastro produtos - sucesso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Valida status 200 e mensagem de sucesso\r",
+							"pm.test(\"Status code 200\", () => pm.response.to.have.status(200));\r",
+							"pm.test(\"Mensagem de sucesso\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.msg).to.equal(\"Produto cadastrado com sucesso!\");\r",
+							"});\r",
+							"\r",
+							"// Valida campos obrigatórios (ISO/IEC 25010)\r",
+							"pm.test(\"Campos obrigatórios presentes\", () => {\r",
+							"    const schema = {\r",
+							"        type: 'object',\r",
+							"        required: ['idprodutos', 'name', 'price'],\r",
+							"        properties: {\r",
+							"            idprodutos: { type: 'integer' },\r",
+							"            name: { type: 'string' },\r",
+							"            price: { type: 'string' }\r",
+							"        }\r",
+							"    };\r",
+							"    pm.expect(tv4.validate(response, schema)).to.be.true;\r",
+							"});\r",
+							"pm.test(\"Status code 400\", () => pm.response.to.have.status(400));\r",
+							"pm.test(\"Validação de campos\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.error).to.include(\"Campo 'name' é obrigatório\");\r",
+							"});\r",
+							"pm.test(\"Status code 401\", () => pm.response.to.have.status(401));\r",
+							"pm.test(\"Validação de token\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.error).to.equal(\"Token inválido\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false,
+				"protocolVersion": "auto"
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "camisa teste",
+							"description": "Nome do produto",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "camisa teste preta",
+							"description": "description",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "500",
+							"description": "Preco do produto.",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "Roupas",
+							"description": "Categoria do produto.",
+							"type": "text"
+						},
+						{
+							"key": "shipment",
+							"value": "100",
+							"description": "Preco do frete.",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"description": "Imagem do produto.",
+							"type": "file",
+							"src": "/C:/Users/EdclerytonGabrieldaS/Downloads/eb2837f3-6923-46cb-9c6f-0ec983ca626d_image.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cadastro produtos - sem token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Valida status 200 e mensagem de sucesso\r",
+							"pm.test(\"Status code 200\", () => pm.response.to.have.status(200));\r",
+							"pm.test(\"Mensagem de sucesso\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.msg).to.equal(\"Produto cadastrado com sucesso!\");\r",
+							"});\r",
+							"\r",
+							"// Valida campos obrigatórios (ISO/IEC 25010)\r",
+							"pm.test(\"Campos obrigatórios presentes\", () => {\r",
+							"    const schema = {\r",
+							"        type: 'object',\r",
+							"        required: ['idprodutos', 'name', 'price'],\r",
+							"        properties: {\r",
+							"            idprodutos: { type: 'integer' },\r",
+							"            name: { type: 'string' },\r",
+							"            price: { type: 'string' }\r",
+							"        }\r",
+							"    };\r",
+							"    pm.expect(tv4.validate(response, schema)).to.be.true;\r",
+							"});\r",
+							"pm.test(\"Status code 400\", () => pm.response.to.have.status(400));\r",
+							"pm.test(\"Validação de campos\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.error).to.include(\"Campo 'name' é obrigatório\");\r",
+							"});\r",
+							"pm.test(\"Status code 401\", () => pm.response.to.have.status(401));\r",
+							"pm.test(\"Validação de token\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.error).to.equal(\"Token inválido\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false,
+				"protocolVersion": "auto"
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "camisa teste",
+							"description": "Nome do produto",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "camisa teste",
+							"description": "description",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "5000",
+							"description": "Preco do produto.",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "roupas",
+							"description": "Categoria do produto.",
+							"type": "text"
+						},
+						{
+							"key": "shipment",
+							"value": "zeroreais",
+							"description": "Preco do frete.",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"description": "Imagem do produto.",
+							"type": "file",
+							"src": "/C:/Users/EdclerytonGabrieldaS/Downloads/eb2837f3-6923-46cb-9c6f-0ec983ca626d_image.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cadastro produtos - token invalido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Valida status 200 e mensagem de sucesso\r",
+							"pm.test(\"Status code 200\", () => pm.response.to.have.status(200));\r",
+							"pm.test(\"Mensagem de sucesso\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.msg).to.equal(\"Produto cadastrado com sucesso!\");\r",
+							"});\r",
+							"\r",
+							"// Valida campos obrigatórios (ISO/IEC 25010)\r",
+							"pm.test(\"Campos obrigatórios presentes\", () => {\r",
+							"    const schema = {\r",
+							"        type: 'object',\r",
+							"        required: ['idprodutos', 'name', 'price'],\r",
+							"        properties: {\r",
+							"            idprodutos: { type: 'integer' },\r",
+							"            name: { type: 'string' },\r",
+							"            price: { type: 'string' }\r",
+							"        }\r",
+							"    };\r",
+							"    pm.expect(tv4.validate(response, schema)).to.be.true;\r",
+							"});\r",
+							"pm.test(\"Status code 400\", () => pm.response.to.have.status(400));\r",
+							"pm.test(\"Validação de campos\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.error).to.include(\"Campo 'name' é obrigatório\");\r",
+							"});\r",
+							"pm.test(\"Status code 401\", () => pm.response.to.have.status(401));\r",
+							"pm.test(\"Validação de token\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.error).to.equal(\"Token inválido\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false,
+				"protocolVersion": "auto"
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyODEsImlhdCI6MTc0NzMxMTQ2OCwiZXhwIjoxNzQ3Mzk3ODY4fQ.ggG_bPrhkveUyNV9H4tEaUX9M1Jc_0iVAmFlxL-ji1HE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "camisa teste",
+							"description": "Nome do produto",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "camisa teste",
+							"description": "description",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "5000",
+							"description": "Preco do produto.",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "roupas",
+							"description": "Categoria do produto.",
+							"type": "text"
+						},
+						{
+							"key": "shipment",
+							"value": "zeroreais",
+							"description": "Preco do frete.",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"description": "Imagem do produto.",
+							"type": "file",
+							"src": "/C:/Users/EdclerytonGabrieldaS/Downloads/eb2837f3-6923-46cb-9c6f-0ec983ca626d_image.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cadastro produtos - campo nome em branco",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Valida status 200 e mensagem de sucesso\r",
+							"pm.test(\"Status code 200\", () => pm.response.to.have.status(200));\r",
+							"pm.test(\"Mensagem de sucesso\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.msg).to.equal(\"Produto cadastrado com sucesso!\");\r",
+							"});\r",
+							"\r",
+							"// Valida campos obrigatórios (ISO/IEC 25010)\r",
+							"pm.test(\"Campos obrigatórios presentes\", () => {\r",
+							"    const schema = {\r",
+							"        type: 'object',\r",
+							"        required: ['idprodutos', 'name', 'price'],\r",
+							"        properties: {\r",
+							"            idprodutos: { type: 'integer' },\r",
+							"            name: { type: 'string' },\r",
+							"            price: { type: 'string' }\r",
+							"        }\r",
+							"    };\r",
+							"    pm.expect(tv4.validate(response, schema)).to.be.true;\r",
+							"});\r",
+							"pm.test(\"Status code 400\", () => pm.response.to.have.status(400));\r",
+							"pm.test(\"Validação de campos\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.error).to.include(\"Campo 'name' é obrigatório\");\r",
+							"});\r",
+							"pm.test(\"Status code 401\", () => pm.response.to.have.status(401));\r",
+							"pm.test(\"Validação de token\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.error).to.equal(\"Token inválido\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false,
+				"protocolVersion": "auto"
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyODEsImlhdCI6MTc0NzMxMTQ2OCwiZXhwIjoxNzQ3Mzk3ODY4fQ.ggG_bPrhkveUyNV9H4tEaUX9M1Jc_0iVAmFlxL-jiHE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "camisa teste",
+							"description": "Nome do produto",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "camisa teste",
+							"description": "description",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "5000",
+							"description": "Preco do produto.",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "roupas",
+							"description": "Categoria do produto.",
+							"type": "text"
+						},
+						{
+							"key": "shipment",
+							"value": "zeroreais",
+							"description": "Preco do frete.",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"description": "Imagem do produto.",
+							"type": "file",
+							"src": "/C:/Users/EdclerytonGabrieldaS/Downloads/eb2837f3-6923-46cb-9c6f-0ec983ca626d_image.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cadastro produtos - campo preço em branco Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Valida status 200 e mensagem de sucesso\r",
+							"pm.test(\"Status code 200\", () => pm.response.to.have.status(200));\r",
+							"pm.test(\"Mensagem de sucesso\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.msg).to.equal(\"Produto cadastrado com sucesso!\");\r",
+							"});\r",
+							"\r",
+							"// Valida campos obrigatórios (ISO/IEC 25010)\r",
+							"pm.test(\"Campos obrigatórios presentes\", () => {\r",
+							"    const schema = {\r",
+							"        type: 'object',\r",
+							"        required: ['idprodutos', 'name', 'price'],\r",
+							"        properties: {\r",
+							"            idprodutos: { type: 'integer' },\r",
+							"            name: { type: 'string' },\r",
+							"            price: { type: 'string' }\r",
+							"        }\r",
+							"    };\r",
+							"    pm.expect(tv4.validate(response, schema)).to.be.true;\r",
+							"});\r",
+							"pm.test(\"Status code 400\", () => pm.response.to.have.status(400));\r",
+							"pm.test(\"Validação de campos\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.error).to.include(\"Campo 'name' é obrigatório\");\r",
+							"});\r",
+							"pm.test(\"Status code 401\", () => pm.response.to.have.status(401));\r",
+							"pm.test(\"Validação de token\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.error).to.equal(\"Token inválido\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false,
+				"protocolVersion": "auto"
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyODEsImlhdCI6MTc0NzMxMTQ2OCwiZXhwIjoxNzQ3Mzk3ODY4fQ.ggG_bPrhkveUyNV9H4tEaUX9M1Jc_0iVAmFlxL-jiHE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "camisa teste",
+							"description": "Nome do produto",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "camisa teste",
+							"description": "description",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "5000",
+							"description": "Preco do produto.",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "roupas",
+							"description": "Categoria do produto.",
+							"type": "text"
+						},
+						{
+							"key": "shipment",
+							"value": "zeroreais",
+							"description": "Preco do frete.",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"description": "Imagem do produto.",
+							"type": "file",
+							"src": "/C:/Users/EdclerytonGabrieldaS/Downloads/eb2837f3-6923-46cb-9c6f-0ec983ca626d_image.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cadastro produtos - preço formato invalido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Valida status 200 e mensagem de sucesso\r",
+							"pm.test(\"Status code 200\", () => pm.response.to.have.status(200));\r",
+							"pm.test(\"Mensagem de sucesso\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.msg).to.equal(\"Produto cadastrado com sucesso!\");\r",
+							"});\r",
+							"\r",
+							"// Valida campos obrigatórios (ISO/IEC 25010)\r",
+							"pm.test(\"Campos obrigatórios presentes\", () => {\r",
+							"    const schema = {\r",
+							"        type: 'object',\r",
+							"        required: ['idprodutos', 'name', 'price'],\r",
+							"        properties: {\r",
+							"            idprodutos: { type: 'integer' },\r",
+							"            name: { type: 'string' },\r",
+							"            price: { type: 'string' }\r",
+							"        }\r",
+							"    };\r",
+							"    pm.expect(tv4.validate(response, schema)).to.be.true;\r",
+							"});\r",
+							"pm.test(\"Status code 400\", () => pm.response.to.have.status(400));\r",
+							"pm.test(\"Validação de campos\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.error).to.include(\"Campo 'name' é obrigatório\");\r",
+							"});\r",
+							"pm.test(\"Status code 401\", () => pm.response.to.have.status(401));\r",
+							"pm.test(\"Validação de token\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.error).to.equal(\"Token inválido\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false,
+				"protocolVersion": "auto"
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyODEsImlhdCI6MTc0NzMxMTQ2OCwiZXhwIjoxNzQ3Mzk3ODY4fQ.ggG_bPrhkveUyNV9H4tEaUX9M1Jc_0iVAmFlxL-jiHE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "camisa teste",
+							"description": "Nome do produto",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "camisa teste",
+							"description": "description",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "5000",
+							"description": "Preco do produto.",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "roupas",
+							"description": "Categoria do produto.",
+							"type": "text"
+						},
+						{
+							"key": "shipment",
+							"value": "zeroreais",
+							"description": "Preco do frete.",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"description": "Imagem do produto.",
+							"type": "file",
+							"src": "/C:/Users/EdclerytonGabrieldaS/Downloads/eb2837f3-6923-46cb-9c6f-0ec983ca626d_image.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cadastro produtos - categoria invalida",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Valida status 200 e mensagem de sucesso\r",
+							"pm.test(\"Status code 200\", () => pm.response.to.have.status(200));\r",
+							"pm.test(\"Mensagem de sucesso\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.msg).to.equal(\"Produto cadastrado com sucesso!\");\r",
+							"});\r",
+							"\r",
+							"// Valida campos obrigatórios (ISO/IEC 25010)\r",
+							"pm.test(\"Campos obrigatórios presentes\", () => {\r",
+							"    const schema = {\r",
+							"        type: 'object',\r",
+							"        required: ['idprodutos', 'name', 'price'],\r",
+							"        properties: {\r",
+							"            idprodutos: { type: 'integer' },\r",
+							"            name: { type: 'string' },\r",
+							"            price: { type: 'string' }\r",
+							"        }\r",
+							"    };\r",
+							"    pm.expect(tv4.validate(response, schema)).to.be.true;\r",
+							"});\r",
+							"pm.test(\"Status code 400\", () => pm.response.to.have.status(400));\r",
+							"pm.test(\"Validação de campos\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.error).to.include(\"Campo 'name' é obrigatório\");\r",
+							"});\r",
+							"pm.test(\"Status code 401\", () => pm.response.to.have.status(401));\r",
+							"pm.test(\"Validação de token\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.error).to.equal(\"Token inválido\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false,
+				"protocolVersion": "auto"
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyODEsImlhdCI6MTc0NzMxMTQ2OCwiZXhwIjoxNzQ3Mzk3ODY4fQ.ggG_bPrhkveUyNV9H4tEaUX9M1Jc_0iVAmFlxL-jiHE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "camisa teste",
+							"description": "Nome do produto",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "camisa teste",
+							"description": "description",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "5000",
+							"description": "Preco do produto.",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "roupas",
+							"description": "Categoria do produto.",
+							"type": "text"
+						},
+						{
+							"key": "shipment",
+							"value": "zeroreais",
+							"description": "Preco do frete.",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"description": "Imagem do produto.",
+							"type": "file",
+							"src": "/C:/Users/EdclerytonGabrieldaS/Downloads/eb2837f3-6923-46cb-9c6f-0ec983ca626d_image.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cadastro produtos - sem imagem",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Valida status 200 e mensagem de sucesso\r",
+							"pm.test(\"Status code 200\", () => pm.response.to.have.status(200));\r",
+							"pm.test(\"Mensagem de sucesso\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.msg).to.equal(\"Produto cadastrado com sucesso!\");\r",
+							"});\r",
+							"\r",
+							"// Valida campos obrigatórios (ISO/IEC 25010)\r",
+							"pm.test(\"Campos obrigatórios presentes\", () => {\r",
+							"    const schema = {\r",
+							"        type: 'object',\r",
+							"        required: ['idprodutos', 'name', 'price'],\r",
+							"        properties: {\r",
+							"            idprodutos: { type: 'integer' },\r",
+							"            name: { type: 'string' },\r",
+							"            price: { type: 'string' }\r",
+							"        }\r",
+							"    };\r",
+							"    pm.expect(tv4.validate(response, schema)).to.be.true;\r",
+							"});\r",
+							"pm.test(\"Status code 400\", () => pm.response.to.have.status(400));\r",
+							"pm.test(\"Validação de campos\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.error).to.include(\"Campo 'name' é obrigatório\");\r",
+							"});\r",
+							"pm.test(\"Status code 401\", () => pm.response.to.have.status(401));\r",
+							"pm.test(\"Validação de token\", () => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.error).to.equal(\"Token inválido\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false,
+				"protocolVersion": "auto"
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyODEsImlhdCI6MTc0NzMxMTQ2OCwiZXhwIjoxNzQ3Mzk3ODY4fQ.ggG_bPrhkveUyNV9H4tEaUX9M1Jc_0iVAmFlxL-jiHE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "camisa teste",
+							"description": "Nome do produto",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "camisa teste",
+							"description": "description",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "5000",
+							"description": "Preco do produto.",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "roupas",
+							"description": "Categoria do produto.",
+							"type": "text"
+						},
+						{
+							"key": "shipment",
+							"value": "zeroreais",
+							"description": "Preco do frete.",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"description": "Imagem do produto.",
+							"type": "file",
+							"src": "/C:/Users/EdclerytonGabrieldaS/Downloads/eb2837f3-6923-46cb-9c6f-0ec983ca626d_image.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletar produto - sucesso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code SHOULD BE 200 OK for successful deletion with valid token\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response message SHOULD BE 'Produto deletado com sucesso!'\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody.msg).to.eql(\"Produto deletado com sucesso!\");\r",
+							"});\r",
+							"// Adicionar um teste para verificar se o produto realmente foi deletado (fazendo um GET depois) seria um teste de integração mais completo."
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/1838",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						"1838"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletar produto - sem token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code SHOULD BE 401 Unauthorized or 403 Forbidden when no token\", function () {\r",
+							"    // Este teste FALHARÁ se a API retornar 200 OK.\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([401, 403]);\r",
+							"});\r",
+							"pm.test(\"Response body SHOULD indicate authentication error\", function () {\r",
+							"    // A API atualmente retorna \"Produto deletado com sucesso!\" - ERRADO\r",
+							"    // Quando corrigida, esperamos uma mensagem de erro JSON ou texto.\r",
+							"    // Este teste vai falhar e evidenciar o bug.\r",
+							"    const responseText = pm.response.text(); // ou .json() se esperar JSON\r",
+							"    pm.expect(responseText).to.not.include(\"Produto deletado com sucesso!\");\r",
+							"    // pm.expect(pm.response.json().msg).to.include(\"Acesso negado\"); // Exemplo de mensagem esperada\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/1839",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						"1839"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletar produto - token invalido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code SHOULD BE 401 Unauthorized or 403 Forbidden for invalid token\", function () {\r",
+							"    // Este teste FALHARÁ se a API retornar 200 OK.\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([401, 403]);\r",
+							"});\r",
+							"// Adicionar validação da mensagem de erro, similar ao \"SEM TOKEN\""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyODEsImlhdCI6MTc0NzMxMTQ2OCwiZXhwIjoxNzQ3Mzk3ODY4fQ.ggG_bPrhkveUyNV9H4tEaUX9M1Jc_0iVAmFlxL-ji1HE36",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/1839",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						"1839"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletar produto - id inexistente com token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code SHOULD BE 404 Not Found for non-existent product ID\", function () {\r",
+							"    // Este teste FALHARÁ se a API retornar 200 OK.\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"pm.test(\"Response message SHOULD indicate 'Produto não encontrado'\", function () {\r",
+							"    const responseBody = pm.response.json(); // API retorna JSON atualmente\r",
+							"    pm.expect(responseBody.msg).to.not.eql(\"Produto deletado com sucesso!\"); // Falhará\r",
+							"    // pm.expect(responseBody.msg).to.eql(\"Produto não encontrado\"); // Mensagem esperada\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/895647852",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						"895647852"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletar produto - id formato invalido com token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code SHOULD BE 400 Bad Request for invalid product ID format\", function () {\r",
+							"    // Este teste FALHARÁ se a API retornar 500.\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"pm.test(\"Response message SHOULD indicate 'ID do produto inválido'\", function () {\r",
+							"    const responseBody = pm.response.json(); // API retorna JSON atualmente para o 500\r",
+							"    pm.expect(responseBody.error).to.not.eql(\"Erro ao fazer login\"); // Falhará\r",
+							"    // pm.expect(responseBody.msg).to.eql(\"ID do produto inválido\"); // Mensagem esperada\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{API-IJJ}}/1aaa",
+					"host": [
+						"{{API-IJJ}}"
+					],
+					"path": [
+						"1aaa"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://apipf.jogajuntoinstituto.org",
+			"type": "default"
+		},
+		{
+			"key": "authToken",
+			"value": ""
+		},
+		{
+			"key": "userId",
+			"value": ""
+		}
+	]
+}

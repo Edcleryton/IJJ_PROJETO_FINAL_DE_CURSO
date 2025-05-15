@@ -1,13 +1,15 @@
 
 ![Build](https://img.shields.io/badge/build-N/A-lightgrey)
-![Python](https://img.shields.io/badge/python-3.12%2B-blue) ![License](https://img.shields.io/badge/license-MIT-green)
-![Status](https://img.shields.io/badge/status-Em%20Desenvolvimento-orange)
+![Python](https://img.shields.io/badge/python-3.12%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Status](https://img.shields.io/badge/status-Concluído%20para%20Entrega-brightgreen)
 
 <h1 align="center">
-  <a href="https://github.com/seu-usuario/projeto-final-python">🚀 Projeto Final do Curso QA Avançado - Instituto Joga Junto 🐍</a>
+  <a href="https://github.com/[SEU-USUARIO]/[NOME-DO-SEU-REPOSITORIO]">🚀 Projeto Final do Curso QA Avançado - Instituto Joga Junto 🐍</a>
 </h1>
+
 <p align="center">
-  Projeto final do curso QA Avançado, focado na garantia de qualidade do sistema de controle de estoque do Instituto Joga Junto (IJJ). Este repositório centraliza o planejamento de testes, casos de teste manuais, automação de testes de UI (Selenium e Behave) e de API (Python Requests), relatórios de bugs e métricas de qualidade. O objetivo principal é validar os requisitos da aplicação, executar um plano de testes abrangente e fornecer feedback claro sobre a qualidade do software.
+  Projeto final do curso QA Avançado, focado na garantia de qualidade do sistema de controle de estoque do Instituto Joga Junto (IJJ). Este repositório centraliza o planejamento de testes, casos de teste manuais, automação de testes de UI (Selenium e Behave) e de API (Postman), relatórios de bugs e métricas de qualidade. O objetivo principal é validar os requisitos da aplicação, executar um plano de testes abrangente e fornecer feedback claro sobre a qualidade do software.
 </p>
 
 ---
@@ -26,10 +28,10 @@
 - [▶️ Executando os Testes](#️-executando-os-testes)
   - [Testes Manuais](#testes-manuais)
   - [Testes Automatizados de UI (Behave + Selenium)](#testes-automatizados-de-ui-behave--selenium)
-  - [Testes de API (Python + Requests ou Postman)](#testes-de-api-python--requests-ou-postman)
+  - [Testes de API (Postman / Newman)](#testes-de-api-postman--newman)
 - [📊 Cobertura de Testes](#-cobertura-de-testes)
 - [✨ Funcionalidades Chave Validadas](#-funcionalidades-chave-validadas)
-- [🚧 Status do Projeto (Atualizado em 14/05/2025)](#-status-do-projeto-atualizado-em-14052025)
+- [🚧 Status do Projeto (Atualizado em 15/05/2025)](#-status-do-projeto-atualizado-em-15052025)
 - [👥 Como Contribuir](#-como-contribuir)
 - [❓ FAQ](#-faq)
 - [📜 Licença](#-licença)
@@ -46,7 +48,7 @@ Este repositório representa o desafio final do módulo QA Avançado do Institut
 
 - Planejamento estratégico e documentação de testes (manuais e automatizados).
 - Desenvolvimento e execução de cenários de teste de UI com Selenium e Behave.
-- Desenvolvimento e execução de testes de API com Python e a biblioteca `requests` (quando aplicável).
+- Elaboração e execução de testes de API com Postman.
 - Geração de relatórios de bugs, métricas de execução e cobertura de requisitos.
 
 ---
@@ -88,11 +90,11 @@ O foco deste projeto é validar e assegurar a qualidade das regras de negócio e
 
 ## 🛠 Tecnologias Utilizadas
 
-- **Linguagem Principal:** Python 3.12+ (ex: 3.12.x, 3.13.x)
+- **Linguagem Principal (Testes Automatizados):** Python 3.12+
 - **Testes de UI:** Selenium, Behave (BDD)
-- **Testes de API:** Python Requests (ou Postman, conforme execução)
-- **Gerenciamento de WebDriver:** WebDriver Manager
-- **Variáveis de Ambiente:** python-dotenv
+- **Testes de API:** Postman, Newman (para execução em linha de comando e relatórios)
+- **Gerenciamento de WebDriver:** WebDriver Manager (para Selenium)
+- **Variáveis de Ambiente:** python-dotenv (para scripts Python)
 - **Controle de Versão:** Git / GitHub
 - **Documentação:** Markdown
 
@@ -124,45 +126,48 @@ IJJ\_PROJETO\_FINAL\_DE\_CURSO/
 
 ## ⚙️ Configuração do Ambiente
 
-1. **Clone o Repositório:**
-
+1.  **Clone o Repositório:**
     ```bash
-    git clone [https://github.com/](https://github.com/)[SEU_USUARIO_GITHUB]/[NOME_DO_SEU_REPOSITORIO].git
-    cd [NOME_DO_SEU_REPOSITORIO]
+    git clone [https://github.com/](https://github.com/)[SEU-USUARIO]/[NOME-DO-SEU-REPOSITORIO].git
+    cd [NOME-DO-SEU-REPOSITORIO]
     ```
 
-2. **Crie e Ative um Ambiente Virtual Python:**
-    Recomendado para isolar as dependências. Execute os comandos abaixo dentro da pasta raiz do projeto clonado (`[NOME_DO_SEU_REPOSITORIO]`) ou, se preferir, dentro da pasta específica de automação (ex: `tests/automacao_ui_behave/`).
-
+2.  **Crie e Ative um Ambiente Virtual Python:**
+    Recomendado para isolar as dependências do projeto. Execute os comandos abaixo dentro da pasta raiz do projeto clonado (`[NOME-DO-SEU-REPOSITORIO]`):
     ```bash
-    # Na pasta escolhida (ex: [NOME_DO_SEU_REPOSITORIO])
     python -m venv venv
-    # No Windows:
+    ```
+    *No Windows:*
+    ```bash
     venv\Scripts\activate
-    # No Linux/macOS:
+    ```
+    *No Linux/macOS:*
+    ```bash
     source venv/bin/activate
     ```
 
-3. **Configure as Variáveis de Ambiente (Arquivo `.env`):**
-    Dentro da pasta `tests/automacao_ui_behave/`, crie um arquivo chamado `.env` com o seguinte conteúdo:
+3.  **Configure as Variáveis de Ambiente (Arquivo `.env`):**
+    Se seus testes (especialmente Behave/Selenium) utilizam um arquivo `.env` para carregar URLs base ou credenciais, certifique-se de que ele está configurado corretamente. Este arquivo deve estar localizado na pasta `Tests/` ou na subpasta específica dos testes que o utilizam (ex: `Tests/behave/.env`).
 
+    Exemplo de conteúdo para `Tests/behave/.env` (ajuste conforme sua necessidade):
     ```env
     BASE_URL="[https://projetofinal.jogajuntoinstituto.org/](https://projetofinal.jogajuntoinstituto.org/)"
-    API_URL="[https://apipf.jogajuntoinstituto.org/swagger/](https://apipf.jogajuntoinstituto.org/swagger/)"
+    API_URL_SWAGGER="[https://apipf.jogajuntoinstituto.org/swagger/](https://apipf.jogajuntoinstituto.org/swagger/)"
     ```
+    *Lembre-se de adicionar o arquivo `.env` ao seu `.gitignore` se ele contiver informações sensíveis.*
 
-    *Os scripts de automação carregarão essas variáveis. Considere adicionar `.env` ao seu `.gitignore` se ele contiver informações sensíveis no futuro.*
-
-4. **Instale as Dependências:**
-    Com o ambiente virtual ativo, navegue até a pasta que contém o `requirements.txt` apropriado e instale:
-
+4.  **Instale as Dependências Python:**
+    Com o ambiente virtual ativo, instale as bibliotecas listadas no arquivo `Tests/requirements.txt`:
     ```bash
-    # Exemplo: Se o requirements.txt está em tests/automacao_ui_behave/
-    cd tests/automacao_ui_behave/
-    pip install -r requirements.txt
+    pip install -r Tests/requirements.txt
     ```
+    *(Certifique-se de que `Tests/requirements.txt` inclui `selenium`, `behave`, `webdriver-manager`, `python-dotenv`, e `requests` se você tiver scripts Python para testes de API).*
 
-    (Certifique-se de que seu `requirements.txt` contenha `selenium`, `behave`, `webdriver-manager`, `python-dotenv`. Se tiver testes de API com Python Requests, adicione `requests` também).
+5.  **Instale o Newman (para testes de API via linha de comando):**
+    Requer [Node.js e npm](https://nodejs.org/) previamente instalados. Execute o comando abaixo uma vez para instalação global:
+    ```bash
+    npm install -g newman newman-reporter-htmlextra
+    ```
 
 ---
 
@@ -170,51 +175,53 @@ IJJ\_PROJETO\_FINAL\_DE\_CURSO/
 
 ### Testes Manuais
 
-Os casos de teste manuais e a estratégia de execução estão detalhados no Plano de Teste.
-
-- **Localização:** `docs/Plano de Teste - IJJ.docx` (ou o nome/caminho correto do seu arquivo de plano de teste).
+Os casos de teste manuais e a estratégia de execução estão detalhados nos seguintes documentos:
+-   Plano de Teste: [`docs/test_plan.md`](./docs/test_plan.md)
+-   Casos de Teste Manuais Detalhados: [`docs/CasosDeTesteManuais.md`](./docs/CasosDeTesteManuais.md)
+    *(Se o seu plano de teste principal ainda for o arquivo `Plano de Teste - IJJ.docx`, você pode referenciá-lo também: `docs/Plano de Teste - IJJ.docx`)*
 
 ### Testes Automatizados de UI (Behave + Selenium)
 
-1. Certifique-se de que o ambiente virtual está ativo e as dependências estão instaladas.
-2. Navegue até a pasta raiz dos testes Behave (onde está a subpasta `features/`):
-
+1.  Certifique-se de que o ambiente virtual Python está ativo e as dependências de `Tests/requirements.txt` estão instaladas.
+2.  Navegue até a pasta que contém os testes Behave (geralmente a pasta `Tests/` se suas features estão em `Tests/behave/features/`):
     ```bash
-    cd tests/automacao_ui_behave/
+    cd Tests/
+    # Ou, alternativamente, se você executa de dentro da pasta behave:
+    # cd Tests/behave/
     ```
-
-3. Execute os testes usando:
-
+3.  Execute os testes Behave:
     ```bash
     behave
     ```
+    *(Se você tiver um script customizado como `run_test.py` para executar os testes, inclua as instruções específicas para ele aqui).*
 
-    Ou, se você configurou o script `run_test.py`:
+### Testes de API (Postman / Newman)
 
-    ```bash
-    python run_test.py
-    ```
+Os testes de API foram desenvolvidos e gerenciados utilizando Postman.
 
-### Testes de API (Python + Requests ou Postman)
+1.  **Execução Manual/Exploratória no Postman:**
+    * Abra o aplicativo Postman.
+    * Importe a Collection de testes: [`Tests/API/IJJ_Estoque_API.postman_collection.json`](./Tests/API/IJJ_Estoque_API.postman_collection.json).
+    * (Opcional) Importe o Environment correspondente: [`Tests/API/IJJ_Estoque_API.postman_environment.json`](./Tests/API/IJJ_Estoque_API.postman_environment.json) e selecione-o como ativo no Postman.
+    * Execute as requisições da collection individualmente ou em grupo, conforme os cenários de teste definidos.
 
-- **Com Python + Requests:** Se você desenvolveu scripts (ex: em `tests/api_tests/`):
-  
-    ```bash
-    # Exemplo, ajuste conforme seus arquivos
-    cd tests/api_tests/
-    python nome_do_seu_script_api.py
-    ```
+2.  **Execução Automatizada via Linha de Comando com Newman (Gera Relatório):**
+    * Certifique-se de que o Newman e o reporter `newman-reporter-htmlextra` estão instalados (conforme a seção "Configuração do Ambiente").
+    * A partir da pasta raiz do projeto, execute o seguinte comando no terminal:
+        ```bash
+        newman run Tests/API/IJJ_Estoque_API.postman_collection.json -e Tests/API/IJJ_Estoque_API.postman_environment.json -r cli,htmlextra --reporter-htmlextra-export reports/Newman_API_Test_Report.html
+        ```
+    * Este comando executará todos os testes da collection especificada e gerará um relatório HTML detalhado em `reports/Newman_API_Test_Report.html`.
 
-- **Com Postman:** Execute as coleções diretamente na ferramenta Postman. Exporte a coleção e o ambiente (se houver) e adicione-os ao repositório (ex: na pasta `tests/api_tests_postman/`) para referência.
-
+---
 ---
 
 ## 📊 Cobertura de Testes
 
 A abordagem de cobertura para este projeto concentra-se em:
 
-1. **Cobertura de Requisitos:** Assegurar que todos os Requisitos Funcionais (RFs) e Não Funcionais (NFs) identificados no `Informações do Trabalho.docx` e no `Plano de Teste - IJJ.docx` possuam pelo menos um caso de teste correspondente (manual ou automatizado). O mapeamento e o status da cobertura de requisitos são gerenciados no Plano de Teste.
-2. **Cobertura de Casos de Teste Automatizados:** Monitorar o percentual de cenários de teste manuais (especialmente os de alta prioridade e regressão) que foram automatizados.
+1.  **Cobertura de Requisitos:** Assegurar que todos os Requisitos Funcionais (RFs) e Não Funcionais (NFs) identificados nos documentos de especificação (ex: [`docs/Projeto_Final_QA_Documentacao.pdf`](./docs/Projeto_Final_QA_Documentacao.pdf)) e no Plano de Teste ([`docs/test_plan.md`](./docs/test_plan.md)) possuam pelo menos um caso de teste correspondente (manual ou automatizado). O mapeamento e o status da cobertura de requisitos são gerenciados no Plano de Teste.
+2.  **Cobertura de Casos de Teste Automatizados:** Monitorar o percentual de cenários de teste manuais (especialmente os de alta prioridade e regressão) que foram automatizados (tanto para UI quanto para API).
 
 *A medição de cobertura de código da aplicação alvo (`projetofinal.jogajuntoinstituto.org`) está fora do escopo deste projeto de teste externo.*
 
@@ -224,99 +231,95 @@ A abordagem de cobertura para este projeto concentra-se em:
 
 Este projeto foca na validação das seguintes funcionalidades do sistema de estoque:
 
-- **Gerenciamento de Usuários:**
-  - Autenticação via e-mail e senha (RF0002)
-  - Cadastro restrito a administradores (RF0003)
-  - Exibição de perfil de usuário (RF0009)
-- **Operações de Produtos:**
-  - Cadastro, edição e exclusão de produtos (RF0004, RF0005, RF0008)
-  - Filtragem por categoria e preço (RF0006, RF0007)
-  - Atualização automática de estoque após transações (RF0010)
-- **Pedidos e Transações:**
-  - Acompanhamento de pedidos de compra e prazos de entrega (RF0011)
-  - Registro detalhado de todas as transações para auditoria (RF0012)
-- **Internacionalização e Interface:**
-  - Suporte a múltiplos idiomas (NF0002)
-  - Interface intuitiva e identidade visual da marca (NF0001, NF0003)
-- **Integração:**
-  - Comunicação com sistemas de vendas e financeiro (NF0004)
+-   **Gerenciamento de Usuários:**
+    -   Autenticação via e-mail e senha (RF0002)
+    -   Cadastro restrito a administradores (RF0003)
+    -   Exibição de perfil de usuário (RF0009)
+-   **Operações de Produtos:**
+    -   Cadastro, edição e exclusão de produtos (RF0004, RF0005, RF0008)
+    -   Filtragem por categoria e preço (RF0006, RF0007)
+    -   Atualização automática de estoque após transações (RF0010)
+-   **Pedidos e Transações:**
+    -   Acompanhamento de pedidos de compra e prazos de entrega (RF0011)
+    -   Registro detalhado de todas as transações para auditoria (RF0012)
+-   **Internacionalização e Interface:**
+    -   Suporte a múltiplos idiomas (NF0002)
+    -   Interface intuitiva e identidade visual da marca (NF0001, NF0003)
+-   **Integração:**
+    -   Comunicação com sistemas de vendas e financeiro (NF0004)
 
 ---
 
-## 🚧 Status do Projeto (Atualizado em 14/05/2025)
+
+## 🚧 Status do Projeto (Atualizado em 15/05/2025)
 
 <p align="left">
-  <img src="https://img.shields.io/badge/status-Em%20Desenvolvimento%20%7C%20Fase%20Final-orange" alt="Status do Projeto: Em Desenvolvimento | Fase Final">
+  <img src="https://img.shields.io/badge/status-Concluído%20para%20Entrega-brightgreen" alt="Status do Projeto: Concluído para Entrega">
 </p>
 
-- **Plano de Teste:** Concluído e documentado.
-- **Casos de Teste Manuais (RFs):** Elaborados e documentados no Plano de Teste.
-- **Execução de Testes Manuais:** Em andamento / Finalizando.
-- **Testes de API (Postman):** Em execução / Resultados sendo coletados.
-- **Testes Automatizados de UI (Behave/Selenium):** 1 cenário de login implementado e funcional.
-- **Relatório de Bugs:** Em elaboração, com bugs sendo registrados e evidenciados.
-- **Coleta de Evidências:** Em andamento, junto com a execução dos testes.
+**Atividades Realizadas / Entregáveis Chave (15/05/2025):**
 
-**Foco para 15/05/2025 (Dia da Entrega):**
-
-- Finalizar a execução de todos os testes planejados.
-- Completar e revisar o Relatório de Bugs, incluindo todas as evidências.
-- Gerar estatísticas finais de execução de testes e métricas de qualidade.
-- Finalizar e revisar todos os documentos entregáveis (Plano de Teste, README, etc.).
-- Preparar e ensaiar a apresentação final do projeto.
+-   Finalização da execução dos testes manuais e de API (via Postman).
+-   (Se aplicável) Geração do relatório de execução dos testes de API com Newman ([`reports/Newman_API_Test_Report.html`](./reports/Newman_API_Test_Report.html)).
+-   Elaboração do Relatório de Resumo de Testes ([`docs/RelatorioResumoTestes.md`](./docs/RelatorioResumoTestes.md)).
+-   Documentação e registro de Bug Reports na pasta [`reports/bugs/`](./reports/bugs/).
+-   Consolidação de todos os artefatos de teste (scripts, collections Postman, features Behave) e documentação no repositório GitHub.
+-   Revisão e finalização deste `README.md`.
+-   Preparação para a apresentação final do projeto.
 
 ---
 
 ## 👥 Como Contribuir
 
-Este é um projeto de conclusão de curso, mas se fosse um projeto aberto, o fluxo seria:
+Este é um projeto de conclusão de curso. Para projetos abertos, o fluxo de contribuição geralmente envolve:
 
-1. Faça um Fork deste repositório.
-2. Crie uma nova branch para sua feature/correção: `git checkout -b minha-contribuicao`
-3. Faça commit das suas alterações: `git commit -m "feat: Descreve a contribuição"`
-4. Faça push para a branch: `git push origin minha-contribuicao`
-5. Abra um Pull Request detalhando suas mudanças.
+1.  Fazer um Fork do repositório.
+2.  Criar uma nova branch para sua feature/correção (`git checkout -b minha-feature`).
+3.  Fazer commit das suas alterações (`git commit -am 'Adiciona nova feature'`).
+4.  Fazer push para a branch (`git push origin minha-feature`).
+5.  Abrir um Pull Request.
 
 ---
 
 ## ❓ FAQ
 
-**P: Como atualizar as dependências do projeto?**
-R: Com o ambiente virtual ativo, ajuste o arquivo `requirements.txt` (localizado em `tests/automacao_ui_behave/` ou na raiz do projeto, conforme sua organização) e execute `pip install -r requirements.txt`. Para atualizar um pacote específico: `pip install --upgrade nome_do_pacote`.
+**P: Como atualizar as dependências do projeto Python?**
+R: Com o ambiente virtual ativo, navegue até a pasta `Tests/` (ou onde seu `requirements.txt` principal está localizado) e execute `pip install -r requirements.txt`. Para atualizar um pacote específico: `pip install --upgrade nome_do_pacote`.
 
 **P: Onde encontro o Plano de Teste detalhado e os casos de teste manuais?**
-R: O Plano de Teste, que inclui os casos de teste manuais, a estratégia e outras informações, está localizado em `docs/Plano de Teste - IJJ.docx` (ou o nome e formato exato do seu arquivo principal de planejamento).
+R: O Plano de Teste está em [`docs/test_plan.md`](./docs/test_plan.md). Os casos de teste manuais detalhados estão em [`docs/CasosDeTesteManuais.md`](./docs/CasosDeTesteManuais.md). Documentos de referência adicionais, como o escopo do projeto ([`docs/Projeto_Final_QA_Documentacao.pdf`](./docs/Projeto_Final_QA_Documentacao.pdf)) e a documentação da API ([`docs/API_jogajunto.pdf`](./docs/API_jogajunto.pdf)), também estão na pasta `docs/`.
 
 ---
 
 ## 📜 Licença
 
-Este projeto está licenciado sob a Licença MIT. Recomenda-se adicionar um arquivo `LICENSE` na raiz do repositório com o texto completo da licença MIT.
+Este projeto está licenciado sob a Licença MIT. Veja o arquivo `LICENSE` na raiz do repositório para mais detalhes.
+*(Se você não possui um arquivo `LICENSE` na raiz do projeto, crie um contendo o texto da licença MIT, ou remova esta última frase).*
 
 ---
 
 ## 👤 Autores e Contato
+
 <table>
   <tr>
-    <td align="center">
+    <td align="center" valign="top">
       <a href="https://github.com/Edcleryton">
-        <img src="https://avatars.githubusercontent.com/u/134793465?v=4" width="50px" alt="Edcleryton Silva"/>
+        <img src="https://avatars.githubusercontent.com/u/134793465?v=4" width="50px" alt="Edcleryton Silva"/><br />
+        <sub><b>Edcleryton Silva</b></sub>
       </a>
-      <br/>
-      <a href="https://github.com/Edcleryton">Edcleryton Silva</a>
     </td>
-    <td align="center">
+    <td align="center" valign="top">
       <a href="https://github.com/daniloMelin">
-        <img src="https://avatars.githubusercontent.com/u/127984038?v=4" width="50px" alt="Danilo Melin"/>
+        <img src="https://avatars.githubusercontent.com/u/127984038?v=4" width="50px" alt="Danilo Melin"/><br />
+        <sub><b>Danilo Melin</b></sub>
       </a>
-      <br/>
-      <a href="https://github.com/daniloMelin">Danilo Melin</a>
     </td>
-    <td align="center">
-      <a href="https://github.com/Priest-San"> <img src="https://avatars.githubusercontent.com/u/204785556?v=4" width="50px" alt="Daniel Santana"/>
+    <td align="center" valign="top">
+      <a href="https://github.com/Priest-San">
+        <img src="https://avatars.githubusercontent.com/u/204785556?v=4" width="50px" alt="Daniel Santana"/><br />
+        <sub><b>Daniel Santana</b></sub>
       </a>
-      <br/>
-      <a href="https://github.com/Priest-San">Daniel Santana</a> </td>
+    </td>
   </tr>
 </table>
 
@@ -324,14 +327,14 @@ Este projeto está licenciado sob a Licença MIT. Recomenda-se adicionar um arqu
 
 ## 🏆 Créditos e Agradecimentos
 
-* Agradecimento especial ao **Instituto Joga Junto** pela oportunidade de aprendizado e desenvolvimento proporcionada pelo curso de QA Avançado.
-* Às comunidades online e documentações oficiais das ferramentas utilizadas (Selenium, Behave, Python Requests, etc.) pelo vasto material de consulta que auxiliou neste projeto.
+-   Agradecimento especial ao **Instituto Joga Junto** pela oportunidade de aprendizado e desenvolvimento proporcionada pelo curso de QA Avançado.
+-   Às comunidades online e documentações oficiais das ferramentas utilizadas (Selenium, Behave, Postman, Newman, Python, etc.) pelo vasto material de consulta que auxiliou neste projeto.
 
 ---
 
 ## 🎯 Conclusão
 
-Este projeto de Garantia de Qualidade demonstra a aplicação prática de conceitos e ferramentas avançadas de teste de software no contexto do sistema de controle de estoque do Instituto Joga Junto. O objetivo é entregar uma análise de qualidade robusta, identificar possíveis falhas e áreas de melhoria, contribuindo assim para a evolução e confiabilidade do produto.
+Este projeto de Garantia de Qualidade demonstra a aplicação prática de conceitos e ferramentas avançadas de teste de software no contexto do sistema de controle de estoque do Instituto Joga Junto. O objetivo foi entregar uma análise de qualidade robusta, identificar possíveis falhas e áreas de melhoria, e documentar todo o processo de forma clara e profissional, contribuindo assim para a evolução e confiabilidade do produto.
 
 Sinta-se à vontade para explorar o repositório e, se desejar, dar uma ⭐!
 
@@ -339,8 +342,9 @@ Sinta-se à vontade para explorar o repositório e, se desejar, dar uma ⭐!
 
 ## 🔗 Referências
 
-- [Documentação Oficial do Python Requests](https://docs.python-requests.org)
-- [Documentação Oficial do Behave](https://behave.readthedocs.io)
-- [Documentação Oficial do Selenium](https://www.selenium.dev/docs/)
-- [Documentação do python-dotenv](https://github.com/theskumar/python-dotenv)
-- [Guia de Markdown do GitHub](https://guides.github.com/features/mastering-markdown/)
+-   [Documentação Oficial do Postman](https://learning.postman.com/docs/getting-started/introduction/)
+-   [Documentação Oficial do Newman](https://learning.postman.com/docs/collections/using-newman-cli/command-line-integration-with-newman/)
+-   [Documentação Oficial do Behave](https://behave.readthedocs.io)
+-   [Documentação Oficial do Selenium (Python)](https://selenium-python.readthedocs.io/)
+-   [Guia de Markdown do GitHub](https://guides.github.com/features/mastering-markdown/)
+-   [Shields.io (para Badges)](https://shields.io/)

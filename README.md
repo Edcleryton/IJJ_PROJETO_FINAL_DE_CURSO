@@ -151,14 +151,9 @@ IJJ\_PROJETO\_FINAL\_DE\_CURSO/
 
     Exemplo de conteúdo para `Tests/behave/.env` (ajuste conforme sua necessidade):
     ```env
+    BASE_URL="[https://projetofinal.org/](https://projetofinal.org/)"
+    API_URL_SWAGGER="[https://apipf.projetodinal.org/swagger/](https://apipf.projetofinal.org/swagger/)"
 
-<<<<<<< HEAD
-    BASE_URL="[https://projetofinal.lojadeestoque.org/](https://projetofinal.lojadeestoque.org/)"
-    API_URL="[https://apipf.lojadeestoque.org/swagger/](https://apipf.lojadeestoque.org/swagger/)"
-=======
-    BASE_URL="[https://projetofinal.jogajuntoinstituto.org/](https://projetofinal.jogajuntoinstituto.org/)"
-    API_URL_SWAGGER="[https://apipf.jogajuntoinstituto.org/swagger/](https://apipf.jogajuntoinstituto.org/swagger/)"
->>>>>>> 9c7c451469bffb0ee2430d902068077910f95a7b
     ```
     *Lembre-se de adicionar o arquivo `.env` ao seu `.gitignore` se ele contiver informações sensíveis.*
 

@@ -1,6 +1,6 @@
-# Testes de API para [Nome da API, ex: IJJ Estoque]
+# Testes da API Joga Junto  1.0.0
 
-Este diretório contém os artefatos para teste da API [Nome da API] utilizando Postman e Newman.
+Este diretório contém os artefatos para teste da API [API Joga Junto  1.0.0] utilizando Postman e Newman.
 
 ## Pré-requisitos
 
@@ -30,7 +30,7 @@ Este diretório contém os artefatos para teste da API [Nome da API] utilizando 
 
 -   Abra o aplicativo Postman.
 -   Importe a Collection `API_IJJ.postman_collection.json`.
--   (Se aplicável) Importe o Environment `API_IJJ.postman_environment.json` e selecione-o como o ambiente ativo.
+-   Importe o Environment `API_IJJ.postman_environment.json` e selecione-o como o ambiente ativo.
 -   Execute as requisições individualmente ou use o "Collection Runner" do Postman para executar toda a collection ou pastas específicas.
 
 ### 2. Execução via Linha de Comando com Newman (Automatizada e para Geração de Relatórios)
@@ -48,7 +48,7 @@ Navegue até a **raiz do projeto principal** no seu terminal.
     ```bash
     npm run test:api
     ```
-    *(Consulte o `package.json` na raiz do projeto para o nome exato do script).*
+  
 
 ## Estrutura dos Testes na Collection Postman
 

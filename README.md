@@ -153,6 +153,7 @@ IJJ\_PROJETO\_FINAL\_DE\_CURSO/
     ```env
     BASE_URL="[https://projetofinal.org/](https://projetofinal.org/)"
     API_URL_SWAGGER="[https://apipf.projetodinal.org/swagger/](https://apipf.projetofinal.org/swagger/)"
+
     ```
     *Lembre-se de adicionar o arquivo `.env` ao seu `.gitignore` se ele contiver informações sensíveis.*
 

@@ -169,7 +169,6 @@ Esta seção detalha os cenários de teste que serão executados. Para os casos 
 * CAD-006: Senha e confirmação de senha divergentes.
 * CAD-007: SSO não permitido no backoffice.
 
-*(Repita essa estrutura de "Abordagem" e "Principais Casos de Teste" para cada subseção de 8.1.2 até 8.1.9, copiando e adaptando o conteúdo do seu DOCX. As tabelas de casos de teste do seu DOCX podem ser simplificadas aqui para apenas listar os IDs e uma breve descrição, e referenciar o `CasosDeTesteManuais.md` para os detalhes completos).*
 
 **Exemplo para 8.1.2:**
 
@@ -197,8 +196,6 @@ Esta seção detalha os cenários de teste que serão executados. Para os casos 
 * LOG-009: Login com Conta expirada.
 * LOG-010: Falha de login com API indisponível.
 
----
-*(Continue para 8.1.3, 8.1.4, etc., até 8.1.9)*
 ---
 
 ### 8.2. Testes Não Funcionais
@@ -358,6 +355,6 @@ Os resultados revelaram que, enquanto algumas funcionalidades da API funcionam p
 
 Apesar dos desafios, os testes geraram informações valiosas. Os testes de API foram documentados no Postman, e os defeitos registrados. A automação de UI (Python, Selenium, Behave) teve sua estrutura inicial e cenários Gherkin desenvolvidos para fluxos críticos; sua implementação completa é recomendada após a estabilização da API.
 
-**Conclui-se que o sistema possui vulnerabilidades e instabilidades significativas em sua API que necessitam de correção urgente.** As "Sugestões de Melhorias" oferecem um roteiro para o aprimoramento. Recomenda-se priorizar a correção dos bugs críticos/graves. Após correções, um ciclo completo de re-testes e testes de regressão será essencial. A expansão dos testes automatizados (API e UI) é fortemente recomendada.
+**Conclui-se que o sistema possui vulnerabilidades e instabilidades significativas em sua API e interface que necessitam de correção urgente.** As "Sugestões de Melhorias" oferecem um roteiro para o aprimoramento. Recomenda-se priorizar a correção dos bugs críticos/graves. Após correções, um ciclo completo de re-testes e testes de regressão será essencial. A expansão dos testes automatizados (API e UI) é fortemente recomendada.
 
 Este esforço de teste cumpriu seu objetivo de diagnosticar a qualidade do software e fornecer direcionamentos para melhoria.

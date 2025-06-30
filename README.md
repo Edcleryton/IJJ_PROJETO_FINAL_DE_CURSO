@@ -128,7 +128,7 @@ IJJ\_PROJETO\_FINAL\_DE\_CURSO/
 
 1.  **Clone o Repositório:**
     ```bash
-    git clone [https://github.com/](https://github.com/)[SEU-USUARIO]/[NOME-DO-SEU-REPOSITORIO].git
+    git clone [https://github.com/](https://github.com/)[SEU-USUARIO]/IJJ_PROJETO_FINAL_DE_CURSO.git
     cd [NOME-DO-SEU-REPOSITORIO]
     ```
 

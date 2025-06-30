@@ -52,10 +52,8 @@ Navegue até a **raiz do projeto principal** no seu terminal.
 
 ## Estrutura dos Testes na Collection Postman
 
-Descreva brevemente como sua collection está organizada:
--   Ex: "A collection está organizada em pastas por funcionalidade (Autenticação, Gerenciamento de Produtos, etc.)."
--   Ex: "Cada requisição contém scripts na aba 'Tests' para validar o código de status da resposta, o schema do JSON de resposta e valores específicos."
--   Mencione se você usa variáveis de collection ou environment e como elas são importantes.
+-   A collection está organizada em pastas por funcionalidade.
+-   Cada requisição contém scripts na aba 'Tests' para validar o código de status da resposta, o schema do JSON de resposta e valores específicos.
 
 ## Troubleshooting / Solução de Problemas Comuns
 
@@ -75,14 +73,13 @@ Descreva brevemente como sua collection está organizada:
 -   **Problemas com `npm install -g ...` (Permissões no Linux/macOS):**
     -   Pode ser necessário usar `sudo npm install -g ...`. Considere configurar o npm para não precisar de sudo: [Resolving EACCES permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally).
 
-## O que é Testado (Exemplos)
+## O que é Testado 
 
-Descreva de forma geral o que seus testes de API cobrem:
 -   Validação de códigos de status HTTP para diferentes cenários (sucesso, erro do cliente, erro do servidor).
 -   Verificação da estrutura (schema) das respostas JSON.
 -   Teste de valores específicos nos campos da resposta.
--   Testes de fluxo (ex: criar um recurso, depois buscá-lo, depois atualizá-lo, depois deletá-lo).
--   Testes de autenticação e autorização (se aplicável).
+-   Testes de fluxo (criar um cadastro de item, depois buscá-lo, depois atualizá-lo, depois deletá-lo).
+-   Testes de autenticação e autorização.
 -   Testes de validação de entrada (enviando dados inválidos para verificar o tratamento de erro da API).
 
 ---

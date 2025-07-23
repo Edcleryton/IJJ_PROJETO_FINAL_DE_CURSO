@@ -1,0 +1,29 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      - name: Instalar dependências
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r tests/requirements.txt
+          npm install -g newman newman-reporter-htmlextra
+      - name: Executar testes Behave
+        run: |
+          source venv/bin/activate
+          behave tests/features/
+      - name: Executar testes Newman
+        run: |
+          newman run tests/API/API_IJJ.postman_collection.json -e tests/API/API_IJJ.postman_environment.json -r cli,htmlextra --reporter-htmlextra-export reports/Newman_API_Test_Report.html
+      - name: Salvar relatório
+        uses: actions/upload-artifact@v3
+        with:
+          name: relatorio-newman
+          path: reports/Newman_API_Test_Report.html 

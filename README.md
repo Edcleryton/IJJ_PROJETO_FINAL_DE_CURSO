@@ -270,6 +270,105 @@ Este projeto foca na validação das seguintes funcionalidades do sistema de est
 
 ---
 
+## 🚀 Melhoria Contínua e Automação
+
+### Scripts de Automação
+
+Para facilitar a execução dos testes, crie scripts automatizados. Exemplos:
+
+- **Windows (run_tests.bat):**
+  ```bat
+  @echo off
+  call venv\Scripts\activate
+  echo Executando testes Behave...
+  behave
+  echo Executando testes Newman...
+  newman run tests\API\API_IJJ.postman_collection.json -e tests\API\API_IJJ.postman_environment.json -r cli,htmlextra --reporter-htmlextra-export reports\Newman_API_Test_Report.html
+  pause
+  ```
+- **Linux/Mac (run_tests.sh):**
+  ```sh
+  #!/bin/bash
+  source venv/bin/activate
+  echo "Executando testes Behave..."
+  behave
+  echo "Executando testes Newman..."
+  newman run tests/API/API_IJJ.postman_collection.json -e tests/API/API_IJJ.postman_environment.json -r cli,htmlextra --reporter-htmlextra-export reports/Newman_API_Test_Report.html
+  ```
+
+### Integração Contínua (CI)
+
+Sugestão de workflow para GitHub Actions (`.github/workflows/ci.yml`):
+```yaml
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      - name: Instalar dependências
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r tests/requirements.txt
+          npm install -g newman newman-reporter-htmlextra
+      - name: Executar testes Behave
+        run: |
+          source venv/bin/activate
+          behave tests/features/
+      - name: Executar testes Newman
+        run: |
+          newman run tests/API/API_IJJ.postman_collection.json -e tests/API/API_IJJ.postman_environment.json -r cli,htmlextra --reporter-htmlextra-export reports/Newman_API_Test_Report.html
+      - name: Salvar relatório
+        uses: actions/upload-artifact@v3
+        with:
+          name: relatorio-newman
+          path: reports/Newman_API_Test_Report.html
+```
+
+### Cobertura de Testes
+
+Para medir a cobertura dos testes Python, adicione `coverage` ao `requirements.txt` e execute:
+```bash
+coverage run -m behave tests/features/
+coverage report -m
+```
+
+### Padronização de Código
+
+Utilize linters para manter a qualidade do código:
+- Adicione ao `requirements.txt`: `flake8`, `pylint`
+- Execute:
+  ```bash
+  flake8 tests/features/steps/
+  pylint tests/features/steps/
+  ```
+
+### EditorConfig
+
+Crie um arquivo `.editorconfig` na raiz do projeto para padronizar a formatação:
+```
+root = true
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 4
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+```
+
+### Testes de Performance e Segurança
+
+- Considere adicionar scripts de performance (ex: Locust, JMeter) e cenários de segurança (ex: entradas inválidas, SQL Injection) nos testes de API.
+
+---
+
 ## 👥 Como Contribuir
 
 Este é um projeto de conclusão de curso. Para projetos abertos, o fluxo de contribuição geralmente envolve:
